@@ -8,3 +8,5 @@ alias mfs='[ -f sail ] && sh sail || sh vendor/bin/sail artisan migrate:fresh --
 alias routes='[ -f sail ] && sh sail || sh vendor/bin/sail artisan route:list'
 alias dev='npm run dev'
 
+alias co='git checkout'
+
