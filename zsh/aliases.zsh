@@ -1,7 +1,7 @@
 alias sail='[ -f sail ] && sh sail || sh vendor/bin/sail'
 alias a='[ -f sail ] && sh sail || sh vendor/bin/sail artisan'
 
-alias at='php artisan test'
+alias t='php artisan test'
 
 alias mfs='[ -f sail ] && sh sail || sh vendor/bin/sail artisan migrate:fresh --seed'
 
