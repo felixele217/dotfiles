@@ -1,7 +1,8 @@
 alias sail='[ -f sail ] && sh sail || sh vendor/bin/sail'
 alias a='[ -f sail ] && sh sail || sh vendor/bin/sail artisan'
 
-alias t='php artisan test'
+alias t='composer test-local'
+alias pest='./vendor/bin/pest'
 
 alias mfs='[ -f sail ] && sh sail || sh vendor/bin/sail artisan migrate:fresh --seed'
 
