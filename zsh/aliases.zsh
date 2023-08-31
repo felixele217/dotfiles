@@ -1,13 +1,11 @@
-alias sail='[ -f sail ] && sh sail || sh vendor/bin/sail'
-alias a='[ -f sail ] && sh sail || sh vendor/bin/sail artisan'
+alias pa='php artisan'
 
-alias t='composer test-local'
 alias pest='./vendor/bin/pest'
 
-alias mfs='[ -f sail ] && sh sail || sh vendor/bin/sail artisan migrate:fresh --seed'
+alias mfs='php artisan migrate:fresh --seed'
 
-alias routes='[ -f sail ] && sh sail || sh vendor/bin/sail artisan route:list'
+alias routes='php artisan routes:list'
+
 alias dev='npm run dev'
 
 alias co='git checkout'
-
