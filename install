@@ -4,7 +4,13 @@ DOTFILES=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
 rm -rf $HOME/.oh-my-zsh/custom/aliases.zsh
 ln -s $DOTFILES/zsh/aliases.zsh $HOME/.oh-my-zsh/custom/aliases.zsh
 
+rm -rf $HOME/.zshrc
+ln -s $DOTFILES/zsh/.zshrc $HOME/.zshrc
+
 rm -rf $HOME/.config/nvim
 ln -s $DOTFILES/nvim $HOME/.config
+
+rm -rf $HOME/gruvbox.itermcolors
+ln -s $DOTFILES/iterm2/gruvbox.itermcolors $HOME
 
 echo 'successfully installed...'
