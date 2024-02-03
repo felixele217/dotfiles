@@ -1,8 +1,10 @@
-#!/usr/bin/env bash
 
 DOTFILES=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
 
 rm -rf $HOME/.oh-my-zsh/custom/aliases.zsh
 ln -s $DOTFILES/zsh/aliases.zsh $HOME/.oh-my-zsh/custom/aliases.zsh
+
+rm -rf $HOME/.config/nvim
+ln -s $DOTFILES/nvim $HOME/.config
 
 echo 'successfully installed...'
