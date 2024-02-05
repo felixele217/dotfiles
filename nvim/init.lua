@@ -27,8 +27,6 @@ local plugins = {
     { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' }
 }
 
-local options = {}
-
 require("lazy").setup(plugins, options)
 
 local builtin = require('telescope.builtin')
