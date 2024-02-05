@@ -2,6 +2,7 @@ vim.cmd("set expandtab")
 vim.cmd("set tabstop=4")
 vim.cmd("set softtabstop=4")
 vim.cmd("set shiftwidth=4")
+vim.cmd("set number")
 vim.g.mapleader = " "
 
 local lazypath = vim.fn.stdpath("data") .. "lazy/lazy.nvim"
@@ -20,8 +21,8 @@ vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
     {
-        'nvim-telescope/telescope.nvim', tag = '0.1.5',
-        dependencies = { 'nvim-lua/plenary.nvim' }
+    'nvim-telescope/telescope.nvim', tag = '0.1.5',
+      dependencies = { 'nvim-lua/plenary.nvim' }
     },
     { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' }
 }
