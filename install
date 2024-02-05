@@ -5,7 +5,7 @@ rm -rf $HOME/.oh-my-zsh/custom/aliases.zsh
 ln -s $DOTFILES/zsh/aliases.zsh $HOME/.oh-my-zsh/custom/aliases.zsh
 
 rm -rf $HOME/.zshrc
-ln -s $DOTFILES/zsh/.zshrc $HOME/.zshrc
+ln -s $DOTFILES/zsh/zshrc $HOME/.zshrc
 
 rm -rf $HOME/.config/nvim
 ln -s $DOTFILES/nvim $HOME/.config

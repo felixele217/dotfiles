@@ -9,3 +9,5 @@ alias routes='php artisan routes:list'
 alias dev='npm run dev'
 
 alias co='git checkout'
+
+alias ls='colorls'
