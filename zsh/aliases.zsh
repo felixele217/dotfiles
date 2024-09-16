@@ -17,3 +17,8 @@ alias dev='npm run dev'
 alias co='git checkout'
 
 alias ls='colorls'
+
+alias n='nvim'
+alias nconf='cd ~/.config/nvim/ && nvim .'
+
+alias aconf='nvim ~/oh-my-zsh/custom/aliases.zsh'
