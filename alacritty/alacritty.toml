@@ -6,7 +6,7 @@ startup_mode = 'Maximized'
 option_as_alt = "Both"
 
 [font]
-size = 16
+size = 17
 
 # FiraCode Nerd Font
 normal = { family = "FiraCode Nerd Font", style = "Regular" }

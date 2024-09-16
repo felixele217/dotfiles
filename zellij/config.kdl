@@ -16,3 +16,6 @@ themes {
     }
 }
 
+default_layout "compact"
+on_force_close "quit"
+
