@@ -9,7 +9,6 @@ return {
     opts = {
       colorscheme = "onedark",
       style = "warm",
-      term_colors = true,
     },
   },
 }
