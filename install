@@ -16,4 +16,7 @@ ln -s $DOTFILES/zellij $HOME/.config/zellij
 rm -rf $HOME/.config/alacritty
 ln -s $DOTFILES/alacritty $HOME/.config/alacritty
 
+rm -rf $HOME/.config/kitty
+ln -s $DOTFILES/kitty $HOME/.config/kitty
+
 echo 'successfully installed...'
