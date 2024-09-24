@@ -6,6 +6,8 @@ padding.y = 14
 decorations = "buttonless" # Removes the window decoration (title bar, etc.)
 startup_mode = 'Maximized'
 option_as_alt = "Both"
+opacity = 0.8
+blur = true
 
 [font]
 size = 20
