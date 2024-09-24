@@ -1,0 +1,21 @@
+DOTFILES=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
+
+rm -rf $HOME/.oh-my-zsh/custom/aliases.zsh
+ln -s $DOTFILES/zsh/aliases.zsh $HOME/.oh-my-zsh/custom/aliases.zsh
+
+rm -rf $HOME/.zshrc
+ln -s $DOTFILES/zsh/.zshrc $HOME/.zshrc
+
+rm -rf $HOME/.config/nvim
+ln -s $DOTFILES/nvim $HOME/.config/nvim
+
+rm -rf $HOME/.config/zellij
+ln -s $DOTFILES/zellij $HOME/.config/zellij
+
+rm -rf $HOME/.config/alacritty
+ln -s $DOTFILES/alacritty $HOME/.config/alacritty
+
+rm -rf $HOME/.config/kitty
+ln -s $DOTFILES/kitty $HOME/.config/kitty
+
+echo 'successfully installed...'
