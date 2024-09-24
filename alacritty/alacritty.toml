@@ -1,16 +1,19 @@
 import = ["~/.config/alacritty/themes/themes/coolnight.toml"]
 
 [window]
-padding.x = 16
-padding.y = 14
+padding.x = 0
+padding.y = 0
 decorations = "buttonless" # Removes the window decoration (title bar, etc.)
 startup_mode = 'Maximized'
 option_as_alt = "Both"
 opacity = 0.8
 blur = true
 
+
 [font]
 size = 20
+offset.y = 16
+glyph_offset.y = 8
 
 # FiraCode Nerd Font
 normal = { family = "FiraCode Nerd Font", style = "Regular" }
