@@ -3,12 +3,11 @@ import = ["~/.config/alacritty/themes/themes/coolnight.toml"]
 [window]
 padding.x = 0
 padding.y = 0
-decorations = "buttonless" # Removes the window decoration (title bar, etc.)
+decorations = "buttonless"
 startup_mode = 'Maximized'
 option_as_alt = "Both"
 opacity = 0.8
 blur = true
-
 
 [font]
 size = 18
