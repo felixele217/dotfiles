@@ -1,9 +1,10 @@
-alias pa='php artisan'
+alias a='php artisan'
 
 alias pest='./vendor/bin/pest'
 
 alias mfs='php artisan migrate:fresh --seed'
 
+alias pu='./vendor/bin/phpunit'
 alias phpcs='./vendor/bin/php-cs-fixer fix --config=.php-cs-fixer.dist.php -v'
 alias ptest='php artisan test --parallel'
 
