@@ -21,4 +21,4 @@ alias ls='colorls'
 alias n='nvim'
 alias nconf='cd ~/.config/nvim/ && nvim .'
 
-alias aconf='nvim ~/oh-my-zsh/custom/aliases.zsh'
+alias aconf='nvim ~/.oh-my-zsh/custom/aliases.zsh'
