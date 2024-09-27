@@ -1,6 +1,7 @@
 vim.g.lazyvim_php_lsp = "intelephense"
 
 vim.opt.cmdheight = 0
+vim.opt.cursorline = false
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4

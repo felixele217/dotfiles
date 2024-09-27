@@ -1,7 +1,3 @@
-if true then
-  return {}
-end
-
 return {
   "echasnovski/mini.files",
   keys = {
@@ -25,6 +21,14 @@ return {
         require("mini.files").open(LazyVim.root(), true)
       end,
       desc = "Open mini.files (root)",
+    },
+  },
+  opts = {
+    windows = {
+      preview = true,
+    },
+    options = {
+      use_as_default_explorer = true,
     },
   },
 }
