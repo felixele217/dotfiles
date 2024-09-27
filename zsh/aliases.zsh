@@ -14,6 +14,8 @@ alias dusktest='php artisan dusk --env=testing'
 
 alias routes='php artisan routes:list'
 
+alias ghd='function _gh_deploy() { current_branch=$(git rev-parse --abbrev-ref HEAD); gh workflow run deploy.yml --ref "$current_branch" -f environment=development-"$1"; }; _gh_deploy'
+
 alias dev='npm run dev'
 
 alias co='git checkout'
