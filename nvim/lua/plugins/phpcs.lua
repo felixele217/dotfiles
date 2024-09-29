@@ -16,3 +16,6 @@ end
 
 -- Call the setup function during initialization
 setup_php_cs_fixer()
+
+return {}
+

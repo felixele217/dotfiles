@@ -6,7 +6,6 @@ return {
 
             conform.setup({
                 formatters_by_ft = {
-                    php = { "php" },
                     blade = { "blade-formatter" },
                 },
                 format_on_save = {
