@@ -1,34 +1,35 @@
 return {
-  "echasnovski/mini.files",
-  keys = {
-    {
-      "<leader>e",
-      function()
-        require("mini.files").open(vim.api.nvim_buf_get_name(0), true)
-      end,
-      desc = "Open mini.files (directory of current file)",
+    "echasnovski/mini.files",
+    keys = {
+        {
+            "<leader>e",
+            function()
+                require("mini.files").open(vim.api.nvim_buf_get_name(0), true)
+            end,
+            desc = "Open mini.files (directory of current file)",
+        },
+        {
+            "<leader>E",
+            function()
+                require("mini.files").open(vim.uv.cwd(), true)
+            end,
+            desc = "Open mini.files (cwd)",
+        },
+        {
+            "<leader>fm",
+            function()
+                require("mini.files").open(LazyVim.root(), true)
+            end,
+            desc = "Open mini.files (root)",
+        },
     },
-    {
-      "<leader>E",
-      function()
-        require("mini.files").open(vim.uv.cwd(), true)
-      end,
-      desc = "Open mini.files (cwd)",
+    opts = {
+        windows = {
+            preview = true,
+            width_preview = 50,
+        },
+        options = {
+            use_as_default_explorer = true,
+        },
     },
-    {
-      "<leader>fm",
-      function()
-        require("mini.files").open(LazyVim.root(), true)
-      end,
-      desc = "Open mini.files (root)",
-    },
-  },
-  opts = {
-    windows = {
-      preview = true,
-    },
-    options = {
-      use_as_default_explorer = true,
-    },
-  },
 }

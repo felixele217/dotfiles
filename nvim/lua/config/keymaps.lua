@@ -16,5 +16,8 @@ keymap.set("n", "<leader>Q", ":bufdo bdelete<CR>")
 keymap.set("v", "p", '"_dP')
 
 -- Easy insertion of a trailing ; or , from insert mode.
-keymap.set("n", ";;", "<Esc>A;<Esc>")
-keymap.set("n", ",,", "<Esc>A,<Esc>")
+keymap.set("i", ";;", "<Esc>A;<Esc>")
+keymap.set("i", ",,", "<Esc>A,<Esc>")
+
+-- Select all
+keymap.set("n", "<C-a>", "gg<S-v>G")
