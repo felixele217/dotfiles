@@ -2,7 +2,7 @@
 
 [window]
 padding.x = 16
-padding.y = 10
+padding.y = 16
 decorations = "buttonless"
 startup_mode = 'Maximized'
 option_as_alt = "Both"
@@ -19,9 +19,9 @@ normal = { family = "FiraCode Nerd Font", style = "Regular" }
 bold = { family = "FiraCode Nerd Font", style = "Bold" }
 italic = { family = "FiraCode Nerd Font", style = "Italic" }
 
-[shell]
-program = "/opt/homebrew/bin/tmux"
-args = ["attach"]
+# [shell]
+# program = "/opt/homebrew/bin/tmux"
+# args = ["attach"]
 
 # One Dark theme
 [colors]
