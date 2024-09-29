@@ -17,3 +17,9 @@ keymap.set("i", ",,", "<Esc>A,<Esc>")
 
 -- Select all
 keymap.set("n", "<C-a>", "gg<S-v>G")
+
+-- Paste replace visual selection without copying it.
+keymap.set('v', 'p', '"_dP')
+
+-- Reselect pasted text
+keymap.set('n', 'p', 'p`[v`]')
