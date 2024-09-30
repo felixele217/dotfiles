@@ -2,12 +2,10 @@
 
 [window]
 padding.x = 16
-padding.y = 16
+padding.y = 10
 decorations = "buttonless"
 startup_mode = 'Maximized'
 option_as_alt = "Both"
-# opacity = 0.8
-# blur = true
 
 [font]
 size = 16
