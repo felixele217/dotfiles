@@ -7,6 +7,7 @@ return {
             conform.setup({
                 formatters_by_ft = {
                     blade = { "blade-formatter" },
+                    vue = { "prettier" }
                 },
                 format_on_save = {
                     lsp_fallback = true,
