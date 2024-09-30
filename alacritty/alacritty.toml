@@ -9,8 +9,8 @@ option_as_alt = "Both"
 
 [font]
 size = 16
-offset.y = 26
-glyph_offset.y = 13
+offset.y = 24
+glyph_offset.y = 12
 
 # FiraCode Nerd Font
 normal = { family = "FiraCode Nerd Font", style = "Regular" }
