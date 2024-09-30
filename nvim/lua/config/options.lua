@@ -44,3 +44,5 @@ vim.opt.secure = true
 vim.opt.titlestring = "%f // nvim"
 vim.opt.inccommand = "split"
 vim.opt.swapfile = false
+
+vim.g.lazyvim_prettier_needs_config = false
