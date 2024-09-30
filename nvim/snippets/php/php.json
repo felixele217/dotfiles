@@ -1,0 +1,12 @@
+{
+    "PHP Unit Test": {
+        "prefix": "test",
+        "body": [
+            "/** @test */",
+            "public function it_${1:tests}(): void",
+            "{",
+            "$2",
+            "}"
+        ]
+    }
+}
