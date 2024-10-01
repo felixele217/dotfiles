@@ -20,8 +20,6 @@ alias dev='npm run dev'
 
 alias co='git checkout'
 
-alias ls='colorls'
-
 alias vim='nvim'
 
-alias aconf='nvim ~/.oh-my-zsh/custom/aliases.zsh'
+alias ...='cd ~'
