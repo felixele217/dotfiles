@@ -8,7 +8,7 @@ startup_mode = 'Maximized'
 option_as_alt = "Both"
 
 [font]
-size = 16
+size = 18
 offset.y = 22
 glyph_offset.y = 11
 
@@ -20,6 +20,7 @@ italic = { family = "FiraCode Nerd Font", style = "Italic" }
 [shell]
 program = "/opt/homebrew/bin/tmux"
 args = ["attach"]
+# find out tmuxifier load-session clockin
 
 # One Dark theme
 [colors]

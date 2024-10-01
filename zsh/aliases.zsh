@@ -22,7 +22,6 @@ alias co='git checkout'
 
 alias ls='colorls'
 
-alias n='nvim'
-alias nconf='cd ~/.config/nvim/ && nvim .'
+alias vim='nvim'
 
 alias aconf='nvim ~/.oh-my-zsh/custom/aliases.zsh'
