@@ -11,6 +11,6 @@ return {
         -- vim.keymap.set("n", "<leader>a", ":TestSuite<CR>", {})
         -- vim.keymap.set("n", "<leader>g", ":TestVisit<CR>", {})
         vim.cmd("let test#strategy = 'vimux'")
-        vim.cmd("let test#php#phpunit#executable = 'php artisan test'")
+        vim.cmd("let test#php#phpunit#executable = './vendor/bin/phpunit'")
     end,
 }
