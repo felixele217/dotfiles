@@ -1,16 +1,27 @@
 return {
-    "vim-test/vim-test",
-    dependencies = {
-        "preservim/vimux"
+    'vim-test/vim-test',
+    keys = {
+        { '<Leader>tn', ':silent TestNearest<CR>' },
+        { '<Leader>tf', ':silent TestFile<CR>' },
+        { '<Leader>ts', ':silent TestSuite<CR>' },
+        { '<Leader>tl', ':silent TestLast<CR>' },
+        { '<Leader>tv', ':silent TestVisit<CR>' },
     },
+    dependencies = { 'voldikss/vim-floaterm' },
     config = function()
-        vim.keymap.set("n", "<leader>tt", ":silent TestNearest<CR>", {})
-        vim.keymap.set("n", "<leader>tf", ":silent TestFile<CR>", {})
-        vim.keymap.set("n", "<leader>tl", ":silent TestLast<CR>", {})
+        vim.cmd([[
+      let test#php#phpunit#options = '--colors=always'
+      let test#php#pest#options = '--colors=always'
+      let g:test#preserve_screen = 0
 
-        -- vim.keymap.set("n", "<leader>a", ":TestSuite<CR>", {})
-        -- vim.keymap.set("n", "<leader>g", ":TestVisit<CR>", {})
-        vim.cmd("let test#strategy = 'vimux'")
-        vim.cmd("let test#php#phpunit#executable = 'php artisan test'")
-    end,
+      function! FloatermStrategy(cmd)
+        execute 'silent FloatermSend q'
+        execute 'silent FloatermKill'
+        execute 'FloatermNew! '.a:cmd.' |less -X'
+      endfunction
+
+      let g:test#custom_strategies = {'floaterm': function('FloatermStrategy')}
+      let g:test#strategy = 'floaterm'
+    ]])
+    end
 }
