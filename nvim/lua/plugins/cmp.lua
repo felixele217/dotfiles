@@ -34,6 +34,15 @@ return {
       { name = "path" },
     }
 
+    local source_map = {
+      buffer = "Buf",
+      nvim_lsp = "LSP",
+      nvim_lsp_signature_help = "Signature",
+      nvim_lua = "Lua",
+      path = "Path",
+      copilot = "Copilot",
+    }
+
     local function ltrim(s)
       return s:match("^%s*(.*)")
     end
@@ -43,15 +52,9 @@ return {
       format = lspkind.cmp_format({
         mode = "symbol",
         maxwidth = 50,
-        menu = {
-          nvim_lsp = "[LSP]",
-          nvim_lsp_signature_help = "[Signature]",
-          buffer = "[Buf]",
-          nvim_lua = "[Lua]",
-          path = "[Path]",
-        },
         before = function(entry, vim_item)
-          vim_item.menu = "  " .. vim_item.kind .. " (" .. entry.source.name .. ")"
+          vim_item.menu = "  " .. vim_item.kind .. " (" .. (source_map[entry.source.name] or entry.source.name) .. ")"
+
           vim_item.menu_hl_group = "SpecialComment"
 
           vim_item.abbr = ltrim(vim_item.abbr)
