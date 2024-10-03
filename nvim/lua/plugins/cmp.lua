@@ -54,7 +54,6 @@ return {
         maxwidth = 50,
         before = function(entry, vim_item)
           vim_item.menu = "  " .. vim_item.kind .. " (" .. (source_map[entry.source.name] or entry.source.name) .. ")"
-
           vim_item.menu_hl_group = "SpecialComment"
 
           vim_item.abbr = ltrim(vim_item.abbr)
