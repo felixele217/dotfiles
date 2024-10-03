@@ -43,10 +43,6 @@ return {
       copilot = "Copilot",
     }
 
-    local function ltrim(s)
-      return s:match("^%s*(.*)")
-    end
-
     opts.formatting = {
       fields = { "kind", "abbr", "menu" },
       format = lspkind.cmp_format({
@@ -55,8 +51,6 @@ return {
         before = function(entry, vim_item)
           vim_item.menu = "  " .. vim_item.kind .. " (" .. (source_map[entry.source.name] or entry.source.name) .. ")"
           vim_item.menu_hl_group = "SpecialComment"
-
-          vim_item.abbr = ltrim(vim_item.abbr)
 
           return vim_item
         end,
