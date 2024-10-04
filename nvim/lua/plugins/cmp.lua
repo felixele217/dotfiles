@@ -27,6 +27,7 @@ return {
         }
 
         opts.sources = {
+            { name = "snippets" },
             { name = "nvim_lsp" },
             { name = "buffer" },
             { name = "text" },
@@ -41,6 +42,7 @@ return {
             nvim_lua = "Lua",
             path = "Path",
             copilot = "Copilot",
+            snippets = "Snippet"
         }
 
         opts.formatting = {
@@ -49,8 +51,10 @@ return {
                 mode = "symbol",
                 maxwidth = 50,
                 before = function(entry, vim_item)
-                    vim_item.menu = "  " ..
-                    vim_item.kind .. " (" .. (source_map[entry.source.name] or entry.source.name) .. ")"
+                    local source_name = source_map[entry.source.name] or entry.source.name
+                    local kind_display = vim_item.kind ~= source_name and vim_item.kind .. " " or ""
+                    vim_item.menu = kind_display .. "[" .. source_name .. "]"
+
                     vim_item.menu_hl_group = "SpecialComment"
 
                     return vim_item
