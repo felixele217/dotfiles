@@ -8,7 +8,7 @@ return {
         'nvim-telescope/telescope-live-grep-args.nvim',
     },
     keys = {
-        { '<leader>a', function() require("telescope.builtin").lsp_document_symbols({ symbols = { "method", "function" } }) end },
+        { '<leader>e', function() require("telescope.builtin").lsp_document_symbols({ symbols = { "method", "function" } }) end },
     },
     config = function()
         require('telescope').setup({

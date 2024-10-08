@@ -6,7 +6,6 @@ return {
         "hrsh7th/cmp-nvim-lsp-signature-help",
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-path",
-        -- 'hrsh7th/cmp-copilot',
         "onsails/lspkind-nvim",
     },
 
@@ -33,6 +32,7 @@ return {
             { name = "text" },
             { name = "nvim_lsp_signature_help" },
             { name = "path" },
+            { name = "copilot" },
         }
 
         local source_map = {
