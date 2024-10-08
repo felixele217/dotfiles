@@ -23,4 +23,3 @@ keymap.set('v', 'p', '"_dP')
 
 -- Reselect pasted text
 keymap.set('n', 'p', 'p`[v`]')
-

@@ -25,7 +25,10 @@ italic = { family = "FiraCode Nerd Font", style = "Italic" }
 # One Dark theme
 [colors]
 [colors.primary]
-background = '0x1c1c1c'
+# background = '0x262626' # rose pine moon
+background = '0x1c1c1c' # rose pine
+# background = '0x1c1c1c' # vscode
+
 # foreground = '0xabb2bf'
 # bright_foreground = '0xe6efff'
 

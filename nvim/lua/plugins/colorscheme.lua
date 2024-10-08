@@ -9,9 +9,19 @@ return {
     },
 
     {
+        "rose-pine/neovim",
+        name = "rose-pine",
+        opts = {
+            -- variant = "moon",
+        }
+    },
+
+    { "catppuccin/nvim", name = "catppuccin", priority = 1000, opts = { flavour = "macchiato", } },
+
+    {
         "LazyVim/LazyVim",
         opts = {
-            colorscheme = "vscode",
+            colorscheme = "rose-pine",
         },
     },
 }
