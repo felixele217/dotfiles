@@ -6,15 +6,17 @@ return {
                 blade = { "blade-formatter" },
                 vue = { "prettier" },
                 lua = { "styleua " },
+                php = { "phpcsfixer" },
             },
             notify_on_error = true,
             formatters = {
-                php = {
+                phpcsfixer = {
                     command = "php-cs-fixer",
                     args = {
                         "fix",
                         "$FILENAME",
-                        "--config=./vendor/bin/php-cs-fixer fix.php --config=.php-cs-fixer.dist.php -v",
+                        "--config=.php-cs-fixer.dist.php",
+                        "-v",
                     },
                     stdin = false,
                 },
@@ -25,6 +27,16 @@ return {
                 "<leader>cf",
                 ":lua require('conform').format()<CR>",
                 desc = "Format Current File",
+            },
+        },
+    },
+    {
+        -- Remove phpcs linter.
+        "mfussenegger/nvim-lint",
+        optional = true,
+        opts = {
+            linters_by_ft = {
+                php = {},
             },
         },
     },
