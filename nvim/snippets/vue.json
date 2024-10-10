@@ -1,22 +1,24 @@
 {
-    "Setup Vue Component": {
-        "prefix": "comp",
-        "body": [
-            "<script setup lang=\"ts\">",
-            "const props = defineProps<{",
-            "",
-            "}>()",
-            "</script>",
-            "",
-            "<template>",
-            "",
-            "</template>"
-        ]
-    },
-    "Font Awesome": {
-        "prefix": "fa",
-        "body": [
-            "<i class='fa-solid fa-caret-down'></i>"
-        ]
-    }
+  "Setup Vue Component": {
+    "prefix": "comp",
+    "body": [
+      "<script setup lang=\"ts\">",
+      "const props = defineProps<{",
+      "",
+      "}>()",
+      "</script>",
+      "",
+      "<template>",
+      "",
+      "</template>"
+    ]
+  },
+  "Font Awesome": {
+    "prefix": "fa",
+    "body": [
+      "<font-awesome-icon",
+      "icon='fas fa-chevron-down'",
+      "></font-awesome-icon>"
+    ]
+  }
 }
