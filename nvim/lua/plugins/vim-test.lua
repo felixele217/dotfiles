@@ -13,10 +13,10 @@ return {
     },
     config = function()
         vim.cmd([[
-      let test#php#phpunit#options = '--colors=always'
-      let test#php#phpunit#executable = './vendor/bin/phpunit'
+           let test#php#phpunit#options = '--colors=always'
+           let test#php#phpunit#executable = './vendor/bin/phpunit'
 
-      let g:test#strategy = 'vimux'
-    ]])
+           let g:test#strategy = 'vimux'
+         ]])
     end,
 }
