@@ -62,6 +62,7 @@ return {
         auto_install = true,
         highlight = {
             enable = true,
+            disable = { "javascript" },
         },
         indent = {
             enable = true,

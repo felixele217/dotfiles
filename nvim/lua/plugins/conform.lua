@@ -5,6 +5,8 @@ return {
             formatters_by_ft = {
                 blade = { "blade-formatter" },
                 vue = { "prettier" },
+                javascript = { "prettier" },
+                typescript = { "prettier" },
                 lua = { "styleua " },
                 php = { "phpcsfixer" },
             },
@@ -27,16 +29,6 @@ return {
                 "<leader>cf",
                 ":lua require('conform').format()<CR>",
                 desc = "Format Current File",
-            },
-        },
-    },
-    {
-        -- Remove phpcs linter.
-        "mfussenegger/nvim-lint",
-        optional = true,
-        opts = {
-            linters_by_ft = {
-                php = {},
             },
         },
     },

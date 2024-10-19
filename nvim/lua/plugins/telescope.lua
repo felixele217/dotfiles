@@ -6,6 +6,7 @@ return {
         'nvim-lua/plenary.nvim',
         'nvim-tree/nvim-web-devicons',
         'nvim-telescope/telescope-live-grep-args.nvim',
+        'sharkdp/fd',
     },
     keys = {
         { '<leader>e', function() require("telescope.builtin").lsp_document_symbols({ symbols = { "method", "function" } }) end },
@@ -21,6 +22,7 @@ return {
                 },
                 preview = {
                     timeout = 200,
+                    treesitter = false
                 },
                 sorting_strategy = 'ascending',
             },
