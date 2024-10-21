@@ -23,3 +23,5 @@ keymap.set('v', 'p', '"_dP')
 
 -- Reselect pasted text
 keymap.set('n', 'p', 'p`[v`]')
+
+keymap.set('n', '<leader>fp', ':let @+ = @%<CR>', { desc = "Copy current file path to clipboard" })
