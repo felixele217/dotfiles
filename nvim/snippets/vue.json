@@ -20,5 +20,13 @@
       "icon='fas fa-chevron-down'",
       "></font-awesome-icon>"
     ]
+  },
+  "i18n phrases": {
+    "prefix": "ph",
+    "body": ["\\$t('phrases.${1:phrase}')"]
+  },
+  "i18n words": {
+    "prefix": "wo",
+    "body": ["\\$t('words.${1:word}')"]
   }
 }

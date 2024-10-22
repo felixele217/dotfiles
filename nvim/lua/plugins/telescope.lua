@@ -22,7 +22,6 @@ return {
                 },
                 preview = {
                     timeout = 200,
-                    treesitter = false
                 },
                 sorting_strategy = 'ascending',
             },
