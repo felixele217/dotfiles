@@ -12,6 +12,10 @@ return {
         { '<leader>e', function() require("telescope.builtin").lsp_document_symbols({ symbols = { "method", "function" } }) end },
     },
     config = function()
+        -- ignore regex while grep
+        local conf = require('telescope.config').values
+        table.insert(conf.vimgrep_arguments, '--fixed-strings')
+
         require('telescope').setup({
             defaults = {
                 path_display = { truncate = 1 },
@@ -21,6 +25,7 @@ return {
                     prompt_position = 'top',
                 },
                 preview = {
+                    treesitter = false,
                     timeout = 200,
                 },
                 sorting_strategy = 'ascending',

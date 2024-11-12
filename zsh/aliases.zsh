@@ -8,6 +8,8 @@ alias pu='./vendor/bin/phpunit'
 alias phpcs='./vendor/bin/php-cs-fixer fix --config=.php-cs-fixer.dist.php -v'
 alias ptest='php artisan test --parallel'
 
+alias dev="npm run dev"
+
 alias duskserve='php artisan serve --env=testing --port 8008'
 alias duskdriver='sudo ./vendor/laravel/dusk/bin/chromedriver-mac-arm --port=9515'
 alias dusktest='php artisan dusk --env=testing'
