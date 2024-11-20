@@ -7,6 +7,13 @@ return {
         'nvim-tree/nvim-web-devicons',
         'nvim-telescope/telescope-live-grep-args.nvim',
         'sharkdp/fd',
+        {
+            "isak102/telescope-git-file-history.nvim",
+            dependencies = {
+                "nvim-lua/plenary.nvim",
+                "tpope/vim-fugitive"
+            }
+        }
     },
     keys = {
         { '<leader>e', function() require("telescope.builtin").lsp_document_symbols({ symbols = { "method", "function" } }) end },
@@ -42,5 +49,6 @@ return {
                 },
             },
         })
+        require("telescope").load_extension("git_file_history")
     end,
 }
