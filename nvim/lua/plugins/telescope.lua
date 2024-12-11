@@ -6,6 +6,7 @@ return {
         'nvim-lua/plenary.nvim',
         'nvim-tree/nvim-web-devicons',
         'nvim-telescope/telescope-live-grep-args.nvim',
+        'folke/trouble.nvim',
         'sharkdp/fd',
         {
             "isak102/telescope-git-file-history.nvim",
@@ -23,8 +24,15 @@ return {
         local conf = require('telescope.config').values
         table.insert(conf.vimgrep_arguments, '--fixed-strings')
 
+        local open_with_trouble = require("trouble.sources.telescope").open
+
         require('telescope').setup({
+
             defaults = {
+                mappings = {
+                    i = { ["<c-t>"] = open_with_trouble },
+                    n = { ["<c-t>"] = open_with_trouble },
+                },
                 path_display = { truncate = 1 },
                 prompt_prefix = '   ',
                 selection_caret = '  ',

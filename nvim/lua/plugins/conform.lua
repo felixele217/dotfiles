@@ -8,7 +8,7 @@ return {
                 javascript = { "prettier" },
                 typescript = { "prettier" },
                 lua = { "styleua " },
-                php = { "phpcsfixer" },
+                php = { "phpcsfixer", 'pint' },
             },
             notify_on_error = true,
             formatters = {

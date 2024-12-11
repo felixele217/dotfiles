@@ -16,12 +16,13 @@ return {
         }
     },
 
-    { "catppuccin/nvim", name = "catppuccin", priority = 1000, opts = { flavour = "mocha", } },
+    { "catppuccin/nvim",       name = "catppuccin", priority = 1000, opts = { flavour = "mocha", } },
+    { "folke/tokyonight.nvim", lazy = false,        priority = 1000, opts = {}, },
 
     {
         "LazyVim/LazyVim",
         opts = {
-            colorscheme = "rose-pine",
+            colorscheme = "rose-pine"
         },
     },
 }

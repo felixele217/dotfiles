@@ -13,6 +13,13 @@ return {
         local cmp = require("cmp")
         local lspkind = require("lspkind")
 
+        -- cmp.setup.filetype('sql', {
+        --     sources = cmp.config.sources({
+        --         { name = "vim-dadbod-completion" },
+        --         { name = "buffer" },
+        --     })
+        -- })
+
         opts.mapping = vim.tbl_extend("force", opts.mapping, {
             ["<Tab>"] = cmp.mapping.confirm({ select = true }),
             ["<CR>"] = function(fallback)
