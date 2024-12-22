@@ -11,31 +11,25 @@ export PATH=/opt/homebrew/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/
 # add tmuxifier to path
 export PATH="$HOME/.tmuxifier/bin:$PATH"
 export EDITOR=nvim
-eval "$(tmuxifier init -)"
+# eval "$(tmuxifier init -)"
 
 # Herd injected PHP binary.
 # export PATH="/Users/felix/Library/Application Support/Herd/bin/":$PATH
 
-
 # Herd injected PHP 8.2 configuration.
 # export HERD_PHP_82_INI_SCAN_DIR="/Users/felix/Library/Application Support/Herd/config/php/82/"
 
-
 # Herd injected PHP binary.
 export PATH="/Users/felix/Library/Application Support/Herd/bin/":$PATH
-
 
 # Herd injected PHP 8.2 configuration.
 export HERD_PHP_82_INI_SCAN_DIR="/Users/felix/Library/Application Support/Herd/config/php/82/"
 
-
 # Herd injected PHP 8.1 configuration.
 export HERD_PHP_81_INI_SCAN_DIR="/Users/felix/Library/Application Support/Herd/config/php/81/"
 
-
 # Herd injected PHP binary.
 export PATH="/Users/felix/Library/Application Support/Herd/bin/":$PATH
-
 
 # Herd injected PHP 8.3 configuration.
 export HERD_PHP_83_INI_SCAN_DIR="/Users/felix/Library/Application Support/Herd/config/php/83/"

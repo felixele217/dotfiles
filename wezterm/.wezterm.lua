@@ -40,8 +40,7 @@ config.keys = {
     { key = '2', mods = 'CMD',    action = wezterm.action.ActivateTab(1) },
     { key = '3', mods = 'CMD',    action = wezterm.action.ActivateTab(2) },
     { key = '4', mods = 'CMD',    action = wezterm.action.ActivateTab(3) },
+    { key = 'w', mods = 'CMD',    action = wezterm.action.CloseCurrentPane { confirm = true }, },
 }
 
-
--- and finally, return the configuration to wezterm
 return config
