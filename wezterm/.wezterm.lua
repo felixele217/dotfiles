@@ -17,11 +17,9 @@ config.window_decorations = "RESIZE"
 
 -- Transparency
 config.window_background_opacity = 0.95
-config.macos_window_background_blur = 50
+config.macos_window_background_blur = 20
 
 config.color_scheme = "Catppuccin Mocha" -- or Macchiato, Frappe, Latte
-
-
 
 config.font = wezterm.font("MesloLGS Nerd Font Mono")
 config.font_size = 17
