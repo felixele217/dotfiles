@@ -1,50 +1,72 @@
 return {
-  { -- Autocompletion
-    'hrsh7th/nvim-cmp',
-    event = 'InsertEnter',
+    "hrsh7th/nvim-cmp",
     dependencies = {
-      'saadparwaiz1/cmp_luasnip',
-
-      -- Adds other completion capabilities.
-      --  nvim-cmp does not ship with all sources by default. They are split
-      --  into multiple repos for maintenance purposes.
-      'hrsh7th/cmp-nvim-lsp',
-      'hrsh7th/cmp-path',
+        "onsails/lspkind.nvim",
+        "hrsh7th/cmp-nvim-lsp",
+        "hrsh7th/cmp-nvim-lsp-signature-help",
+        "hrsh7th/cmp-buffer",
+        "hrsh7th/cmp-path",
+        "onsails/lspkind-nvim",
     },
-    config = function()
-      -- See `:help cmp`
-      local cmp = require 'cmp'
 
-      cmp.setup {
-        completion = { completeopt = 'menu,menuone,noinsert' },
+    opts = function(_, opts)
+        local cmp = require("cmp")
+        local lspkind = require("lspkind")
 
-        mapping = cmp.mapping.preset.insert {
-          -- Select the [n]ext item
-          ['<C-n>'] = cmp.mapping.select_next_item(),
-          -- Select the [p]revious item
-          ['<C-p>'] = cmp.mapping.select_prev_item(),
+        -- cmp.setup.filetype('sql', {
+        --     sources = cmp.config.sources({
+        --         { name = "vim-dadbod-completion" },
+        --         { name = "buffer" },
+        --     })
+        -- })
 
-          -- Scroll the documentation window [b]ack / [f]orward
-          ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-          ['<C-f>'] = cmp.mapping.scroll_docs(4),
+        opts.mapping = vim.tbl_extend("force", opts.mapping, {
+            -- ["<Tab>"] = cmp.mapping.confirm({ select = true }),
+            ["<CR>"] = function(fallback)
+                cmp.abort()
+                fallback()
+            end,
+            -- ["<C-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
+            -- ["<C-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
+        })
 
-          -- Accept ([y]es) the completion.
-          ['<C-y>'] = cmp.mapping.confirm { select = true },
+        opts.experimental = {
+            ghost_text = false,
+        }
 
-          -- Manually trigger a completion from nvim-cmp.
-          ['<C-Space>'] = cmp.mapping.complete {},
-        },
-        sources = {
-          {
-            name = 'lazydev',
-            -- set group index to 0 to skip loading LuaLS completions as lazydev recommends it
-            group_index = 0,
-          },
-          { name = 'nvim_lsp' },
-          { name = 'path' },
-        },
-      }
+        opts.sources = {
+            { name = "snippets" },
+            { name = "nvim_lsp" },
+            { name = "buffer" },
+            { name = "text" },
+            { name = "nvim_lsp_signature_help" },
+            { name = "path" },
+        }
+
+        local source_map = {
+            buffer = "Buf",
+            nvim_lsp = "LSP",
+            nvim_lsp_signature_help = "Signature",
+            nvim_lua = "Lua",
+            path = "Path",
+            snippets = "Snippet"
+        }
+
+        opts.formatting = {
+            fields = { "kind", "abbr", "menu" },
+            format = lspkind.cmp_format({
+                mode = "symbol",
+                maxwidth = 50,
+                before = function(entry, vim_item)
+                    local source_name = source_map[entry.source.name] or entry.source.name
+                    local kind_display = vim_item.kind ~= source_name and vim_item.kind .. " " or ""
+                    vim_item.menu = kind_display .. "[" .. source_name .. "]"
+
+                    vim_item.menu_hl_group = "SpecialComment"
+
+                    return vim_item
+                end,
+            }),
+        }
     end,
-  },
 }
--- vim: ts=2 sts=2 sw=2 et
