@@ -1,12 +1,12 @@
 local options = {}
 
 options.setup = function(config, wezterm)
-	config.enable_tab_bar = true
+	config.enable_tab_bar = false
 
 	config.window_decorations = "RESIZE"
 
 	-- Transparency
-	config.window_background_opacity = 0.85
+	config.window_background_opacity = 1
 	config.macos_window_background_blur = 0
 
 	-- config.color_scheme = "Rosé Pine Moon (base16)" -- or Macchiato, Frappe, Latte

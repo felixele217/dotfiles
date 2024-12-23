@@ -25,12 +25,11 @@ M.clockin = function(wezterm, cmd, default)
 	local p_cli = p_dev:split({ direction = "Left", size = 0.7 })
 
 	if default then
-		wezterm.mux.set_active_workspace(w_clockin.active_workspace)
+		wezterm.mux.set_active_workspace("clockin")
 	end
 end
 
----@param default boolean
-M.dotfiles = function(wezterm, cmd, default)
+M.dotfiles = function(wezterm, cmd)
 	-- spawn initial window
 	local t_nvim, p_nvim, w_dotfiles = wezterm.mux.spawn_window({
 		workspace = "dotfiles",
@@ -44,14 +43,9 @@ M.dotfiles = function(wezterm, cmd, default)
 	-- spawn and set tabs
 	local t_term, p_cli, _ = w_dotfiles:spawn_tab({})
 	t_nvim:activate()
-
-	if default then
-		wezterm.mux.set_active_workspace(w_dotfiles.active_workspace)
-	end
 end
 
----@param default boolean
-M.app = function(wezterm, cmd, default)
+M.app = function(wezterm, cmd)
 	-- spawn initial window
 	local t_nvim, p_nvim, w_app = wezterm.mux.spawn_window({
 		workspace = "app",
@@ -73,10 +67,6 @@ M.app = function(wezterm, cmd, default)
 
 	-- create split
 	local p_cli = p_dev:split({ direction = "Left", size = 0.7 })
-
-	if default then
-		wezterm.mux.set_active_workspace(w_app.active_workspace)
-	end
 end
 
 return M
