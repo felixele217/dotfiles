@@ -4,11 +4,9 @@ local wezterm = require("wezterm")
 wezterm.on("gui-startup", function(cmd)
 	local workspace = require("utils.workspace")
 
-	workspace.create_clockin_workspace(wezterm, cmd)
-	workspace.create_dotfiles_workspace(wezterm, cmd)
-	workspace.create_app_workspace(wezterm, cmd)
-
-	wezterm.mux.set_active_workspace("clockin")
+	workspace.clockin(wezterm, cmd, true)
+	workspace.dotfiles(wezterm, cmd)
+	workspace.app(wezterm, cmd)
 end)
 
 -- Set status
