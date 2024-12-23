@@ -129,7 +129,6 @@ return {
             return vim.loop.cwd()
           end,
         },
-
         lua_ls = {
           settings = {
             Lua = {
