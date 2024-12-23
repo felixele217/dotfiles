@@ -7,8 +7,8 @@ return {
                 vue = { "prettier" },
                 javascript = { "prettier" },
                 typescript = { "prettier" },
-                lua = { "styleua " },
                 php = { "phpcsfixer", 'pint' },
+                lua = { "styleua " },
             },
             notify_on_error = true,
             formatters = {

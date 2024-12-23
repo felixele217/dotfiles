@@ -41,7 +41,6 @@ return {
             { name = "text" },
             { name = "nvim_lsp_signature_help" },
             { name = "path" },
-            { name = "copilot" },
         }
 
         local source_map = {
@@ -50,7 +49,6 @@ return {
             nvim_lsp_signature_help = "Signature",
             nvim_lua = "Lua",
             path = "Path",
-            copilot = "Copilot",
             snippets = "Snippet"
         }
 
