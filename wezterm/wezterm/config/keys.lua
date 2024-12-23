@@ -15,7 +15,7 @@ keys.setup = function(config, wezterm)
 		{ key = "w", mods = "CMD", action = wezterm.action.CloseCurrentPane({ confirm = true }) },
 
 		-- workspaces
-		{ key = "9", mods = "CMD", action = wezterm.action.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }) },
+		{ key = "s", mods = "LEADER", action = wezterm.action.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }) },
 
 		--TODO: CTRL does not work here as it conflicts with <CTRL-n> of nvim cmp plugins
 		-- { key = "n", mods = "CTRL", action = act.SwitchWorkspaceRelative(1) },
