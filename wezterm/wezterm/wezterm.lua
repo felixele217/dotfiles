@@ -15,6 +15,8 @@ wezterm.on("update-status", function(window)
   window:set_right_status("")
 end)
 
+-- TODO: add navigation between terminal and nvim panes via CTRL hjkl
+
 local config = wezterm.config_builder()
 
 require("config.options").setup(config, wezterm)
