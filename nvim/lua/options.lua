@@ -4,6 +4,9 @@
 -- Make relative line numbers default
 vim.opt.relativenumber = true
 
+-- Disable ~ at the end of files
+vim.opt.fillchars = { eob = ' ' }
+
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = 'a'
 
