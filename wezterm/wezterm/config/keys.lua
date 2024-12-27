@@ -8,21 +8,32 @@ local function is_vim(pane)
 end
 
 local direction_keys = {
+  Left = "h",
+  Down = "j",
+  Up = "k",
+  Right = "l",
+  -- reverse lookup
   h = "Left",
   j = "Down",
   k = "Up",
   l = "Right",
 }
-
-local function split_nav(key)
+local function split_nav(resize_or_move, key)
   return {
     key = key,
-    mods = "CTRL",
+    mods = resize_or_move == "resize" and "META" or "CTRL",
     action = wezterm.action_callback(function(win, pane)
       if is_vim(pane) then
-        win:perform_action({ SendKey = { key = key, mods = "CRTL" } }, pane)
+        -- pass the keys through to vim/nvim
+        win:perform_action({
+          SendKey = { key = key, mods = resize_or_move == "resize" and "META" or "CTRL" },
+        }, pane)
       else
-        win:perform_action({ ActivatePaneDirection = direction_keys[key] }, pane)
+        if resize_or_move == "resize" then
+          win:perform_action({ AdjustPaneSize = { direction_keys[key], 3 } }, pane)
+        else
+          win:perform_action({ ActivatePaneDirection = direction_keys[key] }, pane)
+        end
       end
     end),
   }
@@ -65,10 +76,11 @@ end
 
 keys.setup = function(config)
   config.keys = {
-    split_nav("h"),
-    split_nav("j"),
-    split_nav("k"),
-    split_nav("l"),
+    -- move between split panes
+    split_nav("move", "h"),
+    split_nav("move", "j"),
+    split_nav("move", "k"),
+    split_nav("move", "l"),
 
     -- splits
     { key = "-", mods = "LEADER", action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }) },
@@ -87,10 +99,9 @@ keys.setup = function(config)
     -- show debug overlay
     { key = "d", mods = "LEADER", action = wezterm.action.ShowDebugOverlay },
 
-    -- list workspaces
+    -- workspaces
     { key = "s", mods = "LEADER", action = wezterm.action.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }) },
 
-    -- kill workspace
     {
       key = "k",
       mods = "LEADER",

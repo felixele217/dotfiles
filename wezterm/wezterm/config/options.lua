@@ -11,8 +11,7 @@ options.setup = function(config, wezterm)
 
   config.tab_bar_at_bottom = true
 
-  config.color_scheme = "Rosé Pine Moon (base16)" -- or Macchiato, Frappe, Latte
-  -- config.color_scheme = "Catppuccin Mocha" -- or Macchiato, Frappe, Latte
+  config.color_scheme = "rose-pine" -- or Macchiato, Frappe, Latte
 
   -- To set status once and then every hour
   config.status_update_interval = 3600 * 1000
