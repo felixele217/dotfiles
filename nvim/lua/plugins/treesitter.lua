@@ -52,7 +52,10 @@ return {
     config = function(_, opts)
       require('nvim-treesitter.configs').setup(opts)
 
+      ---Add blade syntax support
+      ---@class ParserConfig[]
       local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
+
       parser_config.blade = {
         install_info = {
           url = 'https://github.com/EmranMR/tree-sitter-blade',
