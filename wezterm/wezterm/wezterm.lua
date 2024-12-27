@@ -11,11 +11,23 @@ end)
 
 -- Set status
 wezterm.on("update-status", function(window)
+  wezterm.log_info(wezterm.mux.get_active_workspace())
   window:set_left_status("     " .. window:active_workspace() .. "     ")
   window:set_right_status("")
 end)
 
--- TODO: add navigation between terminal and nvim panes via CTRL hjkl
+-- Toggle tab bar visibility
+wezterm.on("toggle-tab-bar", function(window, _)
+  local overrides = window:get_config_overrides() or {}
+
+  if overrides.enable_tab_bar == false then
+    overrides.enable_tab_bar = true
+  else
+    overrides.enable_tab_bar = false
+  end
+
+  window:set_config_overrides(overrides)
+end)
 
 local config = wezterm.config_builder()
 

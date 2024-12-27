@@ -49,9 +49,13 @@ keys.setup = function(config, wezterm)
     { key = "2", mods = "CMD", action = wezterm.action.ActivateTab(1) },
     { key = "3", mods = "CMD", action = wezterm.action.ActivateTab(2) },
     { key = "4", mods = "CMD", action = wezterm.action.ActivateTab(3) },
+    { key = "t", mods = "LEADER", action = wezterm.action.EmitEvent("toggle-tab-bar") },
 
     -- close pane
     { key = "w", mods = "CMD", action = wezterm.action.CloseCurrentPane({ confirm = true }) },
+
+    -- show debug overlay
+    { key = "d", mods = "LEADER", action = wezterm.action.ShowDebugOverlay },
 
     -- workspaces
     { key = "s", mods = "LEADER", action = wezterm.action.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }) },
