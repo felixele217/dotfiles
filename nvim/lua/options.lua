@@ -1,8 +1,11 @@
--- NOTE: You can change these options as you wish!
---  For more options, you can see `:help option-list`
+-- For more options, you can see `:help option-list`
 
--- Make relative line numbers default
+-- Relative numbers with absolute number
+vim.opt.number = true
 vim.opt.relativenumber = true
+
+-- "Ruler"
+vim.opt.colorcolumn = '100'
 
 -- Disable ~ at the end of files
 vim.opt.fillchars = { eob = ' ' }
@@ -15,10 +18,6 @@ vim.opt.showmode = false
 
 vim.opt.cmdheight = 0
 
--- Sync clipboard between OS and Neovim.
---  Schedule the setting after `UiEnter` because it can increase startup-time.
---  Remove this option if you want your OS clipboard to remain independent.
---  See `:help 'clipboard'`
 vim.schedule(function()
   vim.opt.clipboard = 'unnamedplus'
 end)
@@ -51,7 +50,7 @@ vim.opt.splitbelow = true
 --  See `:help 'list'`
 --  and `:help 'listchars'`
 vim.opt.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+vim.opt.listchars = { tab = '» ', trail = ' ', nbsp = '␣' }
 
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = 'split'
@@ -61,5 +60,3 @@ vim.opt.scrolloff = 10
 
 -- Ignore swapfile
 vim.opt.swapfile = false
-
--- vim: ts=2 sts=2 sw=2 et

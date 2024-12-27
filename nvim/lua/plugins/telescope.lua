@@ -1,10 +1,3 @@
--- NOTE: Plugins can specify dependencies.
---
--- The dependencies are proper plugin specifications as well - anything
--- you do for a plugin at the top level, you can do for a dependency.
---
--- Use the `dependencies` key to specify the dependencies of a particular plugin
-
 return {
   { -- Fuzzy Finder (files, lsp, etc)
     'nvim-telescope/telescope.nvim',
@@ -31,16 +24,24 @@ return {
       { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
     },
     config = function()
-      -- [[ Configure Telescope ]]
-      -- See `:help telescope` and `:help telescope.setup()`
       require('telescope').setup {
         defaults = {
           layout_config = {
             prompt_position = 'top',
           },
+
           sorting_strategy = 'ascending',
           prompt_prefix = '   ',
           selection_caret = '  ',
+          preview = {
+            treesitter = false,
+            timeout = 200,
+          },
+        },
+        pickers = {
+          find_files = { theme = 'ivy' },
+          live_grep = { theme = 'ivy' },
+          oldfiles = { theme = 'ivy' },
         },
         extensions = {
           ['ui-select'] = {
