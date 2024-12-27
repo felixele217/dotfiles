@@ -22,7 +22,7 @@ M.clockin = function(wezterm, cmd, default)
   p_dev:send_text("npm run dev\n")
 
   -- create split
-  local p_cli = p_dev:split({ direction = "Left", size = 0.7 })
+  local p_cli = p_dev:split({ direction = "Left", size = 0.65 })
 
   if default then
     wezterm.mux.set_active_workspace("clockin")
@@ -66,7 +66,7 @@ M.app = function(wezterm, cmd)
   p_dev:send_text("npm run dev\n")
 
   -- create split
-  local p_cli = p_dev:split({ direction = "Left", size = 0.7 })
+  local p_cli = p_dev:split({ direction = "Left", size = 0.65 })
 end
 
 return M
