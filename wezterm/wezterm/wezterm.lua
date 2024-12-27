@@ -32,6 +32,6 @@ end)
 local config = wezterm.config_builder()
 
 require("config.options").setup(config, wezterm)
-require("config.keys").setup(config, wezterm)
+require("config.keys").setup(config)
 
 return config
