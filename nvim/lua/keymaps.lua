@@ -22,12 +22,20 @@ keymap.set('n', '<leader>qq', '<cmd>:q<CR>', { desc = 'Move focus to the upper w
 -- Paste replace visual selection without copying it.
 keymap.set('v', 'p', '"_dP')
 
+-- Reselect pasted text
+keymap.set('n', 'p', 'p`[v`]')
+
+-- Keep cursor at yanked position
+keymap.set('v', 'y', 'mxy`x')
+
 -- Select all
 keymap.set('n', '<C-a>', 'gg<S-v>G')
 
--- Reselect pasted text
-keymap.set('n', 'p', 'p`[v`]')
-keymap.set('n', 'p', 'p`[v`]')
+-- Copy file path
+keymap.set('n', '<leader>fp', ':let @+ = @%<CR>', { desc = 'Copy current file path to clipboard' })
+
+-- Open diagnostic from current line
+keymap.set('n', '<leader>cd', vim.diagnostic.open_float, { desc = 'Line Diagnostics' })
 
 -- Highlight when yanking (copying) text
 vim.api.nvim_create_autocmd('TextYankPost', {

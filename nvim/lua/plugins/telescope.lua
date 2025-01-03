@@ -39,9 +39,9 @@ return {
           },
         },
         pickers = {
-          find_files = { theme = 'ivy' },
-          live_grep = { theme = 'ivy' },
-          oldfiles = { theme = 'ivy' },
+          -- find_files = { theme = 'ivy' },
+          -- live_grep = { theme = 'ivy' },
+          -- oldfiles = { theme = 'ivy' },
         },
         extensions = {
           ['ui-select'] = {

@@ -51,18 +51,11 @@ options.setup = function(config, wezterm)
   })
 
   config.font = wezterm.font("FiraCode Nerd Font Mono")
-  config.font_size = 17
+  config.font_size = 18
   config.line_height = 1.3
-  config.cell_width = 0.95 -- letter spacing
+  config.cell_width = 0.93 -- letter spacing
 
   config.use_fancy_tab_bar = false
-  -- config.tab_bar_style = {
-  --   active_tab_left = wezterm.format({
-  --     { Background = { Color = "#0b0022" } },
-  --     { Foreground = { Color = "#2b2042" } },
-  --     { Text = SOLID_LEFT_ARROW },
-  --   }),
-  -- }
 
   config.window_padding = {
     left = 20,

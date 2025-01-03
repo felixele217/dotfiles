@@ -116,6 +116,9 @@ return {
         vim.diagnostic.config { signs = { text = diagnostic_signs } }
       end
 
+      local mason_registry = require 'mason-registry'
+      local vue_language_server_path = mason_registry.get_package('vue-language-server'):get_install_path() .. '/node_modules/@vue/language-server'
+
       local servers = {
         intelephense = {
           root_dir = function()
@@ -137,6 +140,20 @@ return {
             },
           },
         },
+
+        ts_ls = {
+          init_options = {
+            plugins = {
+              {
+                name = '@vue/typescript-plugin',
+                location = vue_language_server_path,
+                languages = { 'vue' },
+              },
+            },
+          },
+          filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+        },
+        volar = {},
       }
 
       require('mason').setup()
@@ -149,6 +166,23 @@ return {
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
+      local border = {
+        { '🭽', 'FloatBorder' },
+        { '▔', 'FloatBorder' },
+        { '🭾', 'FloatBorder' },
+        { '▕', 'FloatBorder' },
+        { '🭿', 'FloatBorder' },
+        { '▁', 'FloatBorder' },
+        { '🭼', 'FloatBorder' },
+        { '▏', 'FloatBorder' },
+      }
+
+      -- LSP settings (for overriding per client)
+      local handlers = {
+        ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
+        ['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
+      }
+
       require('mason-lspconfig').setup {
         handlers = {
           function(server_name)
@@ -160,6 +194,8 @@ return {
             local capabilities = require('blink.cmp').get_lsp_capabilities()
 
             server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
+            server.handlers = vim.tbl_deep_extend('force', {}, handlers, server.handlers or {})
+
             require('lspconfig')[server_name].setup(server)
           end,
         },

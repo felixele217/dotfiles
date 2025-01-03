@@ -4,6 +4,8 @@
 vim.opt.number = true
 vim.opt.relativenumber = true
 
+vim.opt.wrap = false
+
 -- "Ruler"
 vim.opt.colorcolumn = '100'
 
@@ -49,7 +51,8 @@ vim.opt.splitbelow = true
 -- Sets how neovim will display certain whitespace characters in the editor.
 --  See `:help 'list'`
 --  and `:help 'listchars'`
-vim.opt.list = true
+vim.opt.list = false
+-- vim.opt.listchars = { tab = '', trail = ' ', nbsp = ' ' }
 
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = 'split'
@@ -57,5 +60,6 @@ vim.opt.inccommand = 'split'
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
+vim.opt.guicursor = 'n-v-c-i:block'
 -- Ignore swapfile
 vim.opt.swapfile = false

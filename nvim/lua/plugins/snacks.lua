@@ -5,12 +5,14 @@ return {
   opts = {
     bigfile = { enabled = true },
     dashboard = { enabled = true },
-    -- indent = { enabled = true },
+    indent = { enabled = true },
     input = { enabled = true },
     notifier = {
       enabled = true,
       timeout = 3000,
     },
+    quickfile = { enabled = true },
+    words = { enabled = true },
   },
   keys = {
     {

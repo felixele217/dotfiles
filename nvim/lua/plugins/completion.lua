@@ -16,10 +16,20 @@ return {
     sources = {
       default = { 'lsp', 'path', 'snippets', 'buffer' },
     },
+
     completion = {
       documentation = {
         auto_show = true,
         auto_show_delay_ms = 200,
+        window = { border = 'rounded' },
+      },
+      menu = {
+        draw = {
+          -- Aligns the keyword you've typed to a component in the menu
+          align_to = 'label', -- or 'none' to disable, or 'cursor' to align to the cursor
+          -- Left and right padding, optionally { left, right } for different padding on each side
+          padding = 1,
+        },
       },
     },
   },
