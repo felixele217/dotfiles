@@ -1,7 +1,7 @@
 return {
   'saghen/blink.cmp',
-  -- optional: provides snippets for the snippet source
   dependencies = 'rafamadriz/friendly-snippets',
+  version = '*',
 
   ---@module 'blink.cmp'
   ---@type blink.cmp.Config
@@ -25,9 +25,7 @@ return {
       },
       menu = {
         draw = {
-          -- Aligns the keyword you've typed to a component in the menu
           align_to = 'label', -- or 'none' to disable, or 'cursor' to align to the cursor
-          -- Left and right padding, optionally { left, right } for different padding on each side
           padding = 1,
         },
       },

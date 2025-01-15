@@ -24,6 +24,10 @@ return {
       { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
     },
     config = function()
+      -- ignore regex while grep
+      local conf = require('telescope.config').values
+      table.insert(conf.vimgrep_arguments, '--fixed-strings')
+
       require('telescope').setup {
         defaults = {
           layout_config = {

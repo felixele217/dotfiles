@@ -22,9 +22,6 @@ keymap.set('n', '<leader>qq', '<cmd>:q<CR>', { desc = 'Move focus to the upper w
 -- Paste replace visual selection without copying it.
 keymap.set('v', 'p', '"_dP')
 
--- Reselect pasted text
-keymap.set('n', 'p', 'p`[v`]')
-
 -- Keep cursor at yanked position
 keymap.set('v', 'y', 'mxy`x')
 

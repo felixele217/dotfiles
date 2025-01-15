@@ -38,3 +38,22 @@ export HERD_PHP_83_INI_SCAN_DIR="/Users/felix/Library/Application Support/Herd/c
 export PATH="/opt/homebrew/opt/mariadb@10.5/bin:$PATH"
 
 export HOMEBREW_NO_AUTO_UPDATE=1
+
+# nice prompt
+FIRST_PROMPT=1
+LAST_COMMAND=""
+
+precmd() {
+  # Skip adding a newline for the first prompt or after the `clear` command
+  if [ "$FIRST_PROMPT" -eq 0 ] && [ "$LAST_COMMAND" != "clear" ]; then
+    echo ""
+  fi
+  FIRST_PROMPT=0
+}
+
+preexec() {
+  # Capture the last executed command
+  LAST_COMMAND=$1
+}
+
+PROMPT=$'%F{cyan}%B%1~%b%f $(git_prompt_info)\n%F{green}%B->%b%f '

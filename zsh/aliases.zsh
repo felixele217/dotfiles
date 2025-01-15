@@ -25,3 +25,5 @@ alias co='git checkout'
 alias vim='nvim'
 
 alias ...='cd ~'
+
+alias startgotenberg="docker run -it --add-host=office.clockin.test:host-gateway --rm -p 3000:3000 gotenberg/gotenberg:8.14.1 /bin/bash"
