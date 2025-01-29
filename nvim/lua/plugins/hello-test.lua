@@ -1,3 +1,5 @@
 return {
-    'felixele217/hello-test.nvim'
+  dir = '~/code/hello-test.nvim/',
+  --
+  -- 'felixele217/hello-test.nvim'
 }

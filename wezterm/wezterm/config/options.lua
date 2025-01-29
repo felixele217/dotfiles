@@ -6,12 +6,12 @@ options.setup = function(config, wezterm)
   config.window_decorations = "RESIZE"
 
   -- Transparency
-  config.window_background_opacity = 0.9
-  config.macos_window_background_blur = 10
+  config.window_background_opacity = 0.85
+  config.macos_window_background_blur = 0
 
   config.tab_bar_at_bottom = true
 
-  config.color_scheme = "rose-pine"
+  -- config.color_scheme = "rose-pine"
 
   -- To set status once and then every hour
   config.status_update_interval = 3600 * 1000
@@ -42,7 +42,7 @@ options.setup = function(config, wezterm)
     },
   })
 
-  config.font_size = 16
+  config.font_size = 18
   config.line_height = 1.3
   -- config.cell_width = 0.93 -- letter spacing
 

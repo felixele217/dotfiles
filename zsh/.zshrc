@@ -56,4 +56,4 @@ preexec() {
   LAST_COMMAND=$1
 }
 
-PROMPT=$'%F{cyan}%B%1~%b%f $(git_prompt_info)\n%F{green}%B->%b%f '
+PROMPT=$'%F{cyan}%B%~%b%f $(git_prompt_info)\n%F{green}%B->%b%f '

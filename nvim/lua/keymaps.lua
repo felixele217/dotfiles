@@ -19,6 +19,14 @@ keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window'
 keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 keymap.set('n', '<leader>qq', '<cmd>:q<CR>', { desc = 'Move focus to the upper window' })
 
+-- Go to errors
+keymap.set('n', ']e', function()
+  vim.diagnostic.goto_next { severity = vim.diagnostic.severity.ERROR }
+end, { desc = 'Go to next error diagnostic' })
+keymap.set('n', '[e', function()
+  vim.diagnostic.goto_prev { severity = vim.diagnostic.severity.ERROR }
+end, { desc = 'Go to prev error diagnostic' })
+
 -- Paste replace visual selection without copying it.
 keymap.set('v', 'p', '"_dP')
 
