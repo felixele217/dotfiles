@@ -1,8 +1,12 @@
 export ZSH="$HOME/.oh-my-zsh"
 
+bindkey '^I' forward-char
+bindkey '^H' vi-backward-word
+
+
 ZSH_THEME="robbyrussell"
 
-# plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
+plugins=(zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -57,3 +61,4 @@ preexec() {
 }
 
 PROMPT=$'%F{cyan}%B%~%b%f $(git_prompt_info)\n%F{green}%B->%b%f '
+

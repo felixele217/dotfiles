@@ -18,6 +18,7 @@ local direction_keys = {
   k = "Up",
   l = "Right",
 }
+
 local function split_nav(resize_or_move, key)
   return {
     key = key,
@@ -101,6 +102,10 @@ keys.setup = function(config)
 
     -- workspaces
     { key = "s", mods = "LEADER", action = wezterm.action.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }) },
+
+    -- in cli, hop back and forward words with this shortcut
+    { key = "b", mods = "CTRL", action = wezterm.action({ SendString = "\b" }) },
+    { key = "w", mods = "CTRL", action = wezterm.action({ SendKey = { key = "f", mods = "ALT" } }) },
 
     {
       key = "k",
