@@ -27,8 +27,10 @@ return {
       require('CopilotChat').setup {
         system_prompt = require('CopilotChat.prompts').COPILOT_INSTRUCTIONS
           .. 'When asked something about inertia the user is likely to refer to the technology for building web applications with Laravel and Vue as a tech stack. This is the documentation https://inertiajs.com/'
-          .. '\n',
+          .. '\nWhen asked something about Vue, have in mind, that I am using the Vue Composition API and give me answers based on that knowledge https://vuejs.org/guide/extras/composition-api-faq.html#composition-api-faq'
+          .. '\nWhen writing test classes, please extend TestCase from use Tests\\TestCases\\TestCase',
 
+        model = 'claude-3.5-sonnet',
         auto_insert_mode = true,
       }
     end,

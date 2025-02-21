@@ -21,17 +21,19 @@ return {
           transparency = true,
         },
       }
-
       vim.cmd 'colorscheme rose-pine'
     end,
   },
-  -- {
-  --   'folke/tokyonight.nvim',
-  --   lazy = false,
-  --   priority = 1000,
-  --   opts = {},
-  --   config = function()
-  --     vim.cmd 'colorscheme tokyonight'
-  --   end,
-  -- },
+  {
+    'catppuccin/nvim',
+    name = 'catppuccin',
+    priority = 1000,
+    config = function()
+      require('catppuccin').setup {
+        no_italic = true, -- Force no italic
+      }
+
+      -- vim.cmd.colorscheme 'catppuccin'
+    end,
+  },
 }
