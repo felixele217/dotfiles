@@ -16,12 +16,12 @@ return {
     opts = {
       format_on_save = {
         -- These options will be passed to conform.format()
-        timeout_ms = 500,
+        timeout_ms = 1000,
         lsp_format = 'fallback',
       },
       notify_on_error = false,
       formatters_by_ft = {
-        lua = { 'stylua' },
+        -- lua = { 'stylua' },
         blade = { 'blade-formatter' },
         vue = { 'prettier' },
         javascript = { 'prettier' },

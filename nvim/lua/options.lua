@@ -60,6 +60,8 @@ vim.opt.inccommand = 'split'
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
-vim.opt.guicursor = 'n-v-c-i:block'
+-- block cursor always
+-- vim.opt.guicursor = 'n-v-c-i:block'
+
 -- Ignore swapfile
 vim.opt.swapfile = false

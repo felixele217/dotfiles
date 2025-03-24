@@ -1,3 +1,5 @@
+source /Users/felix/code/clockin/shared_functions.zsh
+
 export ZSH="$HOME/.oh-my-zsh"
 
 bindkey '^I' forward-char
@@ -62,3 +64,6 @@ preexec() {
 
 PROMPT=$'%F{cyan}%B%~%b%f $(git_prompt_info)\n%F{green}%B->%b%f '
 
+
+# Added by Windsurf
+export PATH="/Users/felix/.codeium/windsurf/bin:$PATH"

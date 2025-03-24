@@ -2,11 +2,38 @@
     "PHP Unit Test": {
         "prefix": "test",
         "body": [
-            "/** @test */",
-            "public function it_${1:tests}(): void",
+            "public function test_${1:description}(): void",
             "{",
-            "$2",
+            "    $2",
             "}"
+        ]
+    },
+    "PHP Test Class": {
+        "prefix": "tclass",
+        "body": [
+            "<?php",
+            "",
+            "namespace Tests\\\\$1;",
+            "",
+            "use Tests\\TestCases\\TestCase;",
+            "",
+            "class ${2}Test extends TestCase",
+            "{",
+            "    $3",
+            "}"
+        ],
+        "description": "Creates a new PHP test class"
+    },
+    "Spatie Data Luxon Literal Type": {
+        "prefix": "lux",
+        "body": [
+            "#[LiteralTypeScriptType('string | luxon.DateTime')]"
+        ]
+    },
+    "Spatie Data Array Type": {
+        "prefix": "arr",
+        "body": [
+            "/** @var array<int, string> */"
         ]
     }
 }
