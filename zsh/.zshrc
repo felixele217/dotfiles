@@ -41,7 +41,7 @@ export PATH="/Users/felix/Library/Application Support/Herd/bin/":$PATH
 
 # Herd injected PHP 8.3 configuration.
 export HERD_PHP_83_INI_SCAN_DIR="/Users/felix/Library/Application Support/Herd/config/php/83/"
-export PATH="/opt/homebrew/opt/mariadb@10.5/bin:$PATH"
+export PATH="/opt/homebrew/opt/mariadb@10.11/bin:$PATH"
 
 export HOMEBREW_NO_AUTO_UPDATE=1
 
@@ -67,3 +67,7 @@ PROMPT=$'%F{cyan}%B%~%b%f $(git_prompt_info)\n%F{green}%B->%b%f '
 
 # Added by Windsurf
 export PATH="/Users/felix/.codeium/windsurf/bin:$PATH"
+
+
+# Herd injected PHP 8.4 configuration.
+export HERD_PHP_84_INI_SCAN_DIR="/Users/felix/Library/Application Support/Herd/config/php/84/"

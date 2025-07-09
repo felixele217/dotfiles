@@ -2,11 +2,12 @@ local wezterm = require("wezterm")
 
 -- Create and set workspaces
 wezterm.on("gui-startup", function(cmd)
-  local workspace = require("utils.workspace")
-
-  workspace.clockin(wezterm, cmd, true)
-  workspace.dotfiles(wezterm, cmd)
-  workspace.app(wezterm, cmd)
+  local tab, pane, window = wezterm.mux.spawn_window {}
+  window:gui_window():maximize()
+  -- local workspace = require("utils.workspace")
+  -- workspace.clockin(wezterm, cmd, true)
+  -- workspace.dotfiles(wezterm, cmd)
+  -- workspace.app(wezterm, cmd)
 end)
 
 -- Set status
