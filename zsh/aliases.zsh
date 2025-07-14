@@ -20,7 +20,7 @@ alias routes='php artisan routes:list'
 alias ghd='function _gh_deploy() { current_branch=$(git rev-parse --abbrev-ref HEAD); gh workflow run deploy.yml --ref "$current_branch" -f environment=development-"$1"; }; _gh_deploy'
 alias ghdt='function _gh_deploy_test() { current_branch=$(git rev-parse --abbrev-ref HEAD); gh workflow run deploy.yml --ref "$current_branch" -f environment=testing; }; _gh_deploy_test'
 
-alias gwip='function _gwip() { message=${1:-"wip"}; git add . && git commit -m "$message" && git push; }; _gwip'
+alias gc='function _gc() { message=${1:-"wip"}; git add . && git commit -m "$message" && git push; }; _gc'
 
 alias dev='npm run dev'
 
