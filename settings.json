@@ -1,0 +1,165 @@
+{
+  /**
+   * Better Defaults
+   **/
+  "editor.rulers": [100],
+  "editor.lineNumbers": "relative",
+  "editor.copyWithSyntaxHighlighting": false,
+  "editor.quickSuggestions": {
+    "strings": "on"
+  },
+  "diffEditor.ignoreTrimWhitespace": false,
+  "editor.emptySelectionClipboard": false,
+  "workbench.editor.enablePreview": false,
+  "window.newWindowDimensions": "inherit",
+  "editor.multiCursorModifier": "ctrlCmd",
+  "files.trimTrailingWhitespace": true,
+  "editor.cursorWidth": 0,
+  "diffEditor.renderSideBySide": true,
+  "editor.snippetSuggestions": "top",
+  "editor.detectIndentation": false,
+  "editor.guides.indentation": true,
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "files.autoSave": "afterDelay",
+  "workbench.editor.showTabs": "single",
+  "editor.minimap.enabled": false,
+  "editor.matchBrackets": "never",
+  "workbench.tips.enabled": false,
+  "editor.colorDecorators": true,
+  "git.decorations.enabled": true,
+  "workbench.startupEditor": "none",
+  "editor.lightbulb.enabled": "off",
+  "editor.selectionHighlight": false,
+  "editor.overviewRulerBorder": false,
+  "editor.renderLineHighlight": "none",
+  "editor.occurrencesHighlight": "singleFile",
+  "problems.decorations.enabled": false,
+  "editor.renderControlCharacters": false,
+  "editor.hideCursorInOverviewRuler": true,
+  "editor.gotoLocation.multipleReferences": "goto",
+  "editor.gotoLocation.multipleDefinitions": "goto",
+  "editor.gotoLocation.multipleDeclarations": "goto",
+  "workbench.editor.enablePreviewFromQuickOpen": false,
+  "editor.gotoLocation.multipleImplementations": "goto",
+  "editor.gotoLocation.multipleTypeDefinitions": "goto",
+  "editor.fontFamily": "JetBrains Mono",
+  "editor.fontLigatures": true,
+  "editor.fontSize": 13,
+  "editor.cursorBlinking": "solid",
+  "editor.lineHeight": 25,
+  "editor.suggestFontSize": 15,
+  "editor.suggestLineHeight": 28,
+  "terminal.integrated.fontSize": 12,
+  "terminal.integrated.lineHeight": 1.5,
+
+  /**
+   * Find
+   **/
+  "search.useIgnoreFiles": false,
+  "search.exclude": {
+    // Hide everything in /vendor, except the "laravel" and "livewire" folder.
+    "**/vendor/{[^l],?[^ai]}*": true,
+    // Hide everything in /public, except "index.php"
+    "**/public/{[^i],?[^n]}*": true,
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/_ide_helper.php": true,
+    "**/composer.lock": true,
+    "**/package-lock.json": true,
+    "storage": true,
+    ".phpunit.result.cache": true
+  },
+
+  /**
+   * Code
+   **/
+  "editor.wordSeparators": "`$-~!@#%^&*()=+[{]}\\|;:'\",.<>/?",
+  "emmet.includeLanguages": {
+    "blade": "html",
+    "vue-html": "html"
+  },
+  "files.associations": {
+    ".php_cs": "php",
+    ".php_cs.dist": "php",
+    "*.css": "tailwindcss"
+  },
+
+  /**
+   * PHP
+   **/
+  "php.suggest.basic": false,
+
+  /**
+   * Pint
+   **/
+  "[php]": {
+    "editor.defaultFormatter": "junstyle.php-cs-fixer",
+    "editor.formatOnSave": true
+  },
+  "php-cs-fixer.executablePath": "${workspaceFolder}/vendor/friendsofphp/php-cs-fixer/php-cs-fixer",
+
+  "[blade]": {
+    "editor.defaultFormatter": "shufo.vscode-blade-formatter",
+    "editor.formatOnSave": true
+  },
+
+  /**
+   * Prettier
+   **/
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  "prettier.useEditorConfig": false,
+  "workbench.colorCustomizations": {
+    "editorCursor.foreground": "#ebb9ca",
+    "editorGutter.addedBackground": "#28a745", // Color for added lines (green)
+    "editorGutter.modifiedBackground": "#2188ff", // Color for modified lines (blue)
+    "editorGutter.deletedBackground": "#cb2431", // Color for removed lines (red)
+    "diffEditor.insertedTextBackground": "#28a74533", // Background color for added text (green with transparency)
+    "diffEditor.removedTextBackground": "#cb243133" // Background color for removed text (red with transparency)
+  },
+
+  "git.confirmSync": false,
+  "git.autofetch": true,
+  "laravel-pint.enable": true,
+
+  "window.titleBarStyle": "custom",
+  "workbench.activityBar.location": "hidden",
+  "githubPullRequests.createOnPublishBranch": "never",
+  "githubPullRequests.pullBranch": "never",
+  "gitlens.views.workspaces.pullRequests.showForBranches": false,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "better-phpunit.phpunitBinary": "",
+  "vim.useSystemClipboard": true,
+  "vim.highlightedyank.enable": true,
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["g", "r"],
+      "commands": ["editor.action.referenceSearch.trigger"]
+    }
+  ],
+  "githubLocalActions.dockerDesktopPath": "/Applications/Docker.app",
+  "githubLocalActions.actCommand": "gh act",
+  "gitlens.ai.generateCommitMessage.customInstructions": "ALWAYS use conventional commits, be short and precise (not more than 130 chars). https://www.conventionalcommits.org/en/v1.0.0/",
+  "debug.onTaskErrors": "debugAnyway",
+  "workbench.sideBar.location": "right",
+  "catppuccin.italicKeywords": false,
+  "yaml.schemas": {
+    "file:///Users/felix/.cursor/extensions/atlassian.atlascode-3.8.10-universal/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+  },
+  "atlascode.jira.enabled": true,
+  "atlascode.bitbucket.enabled": false,
+  "[dart]": {
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "editor.rulers": [80],
+    "editor.selectionHighlight": false,
+    "editor.tabCompletion": "onlySnippets",
+    "editor.wordBasedSuggestions": "off"
+  },
+  "githubPullRequests.useReviewMode": "auto",
+  "workbench.colorTheme": "One Dark Pro Night Flat",
+  "javascript.preferences.importModuleSpecifier": "non-relative",
+  "typescript.preferences.importModuleSpecifier": "non-relative"
+}
