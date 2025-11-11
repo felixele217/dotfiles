@@ -30,7 +30,11 @@ alias vim='nvim'
 
 alias ...='cd ~'
 
-alias startgotenberg="docker run -it --add-host=office.clockin.test:host-gateway --rm -p 3000:3000 gotenberg/gotenberg:8.14.1 /bin/bash"
+alias startgotenberg='docker run -it --add-host=office.clockin.test:host-gateway --rm -p 3000:3000 gotenberg/gotenberg:8.22.0 /bin/bash -c "gotenberg --chromium-ignore-certificate-errors"'
 alias phpstan="./vendor/bin/phpstan analyse"
 
+alias ghpr="gh pr create -t '$(git rev-parse --abbrev-ref HEAD)'"
+
 alias sl="stripe listen --forward-to https://office.clockin.test/stripe/webhook"
+
+alias mm="git fetch origin && git merge origin/main"
