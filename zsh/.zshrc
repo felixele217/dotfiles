@@ -71,3 +71,22 @@ export PATH="/Users/felix/.codeium/windsurf/bin:$PATH"
 
 # Herd injected PHP 8.4 configuration.
 export HERD_PHP_84_INI_SCAN_DIR="/Users/felix/Library/Application Support/Herd/config/php/84/"
+
+deploydist() {
+  TARGET=~/code/felixele217.github.io
+
+  echo "➡️ Removing old dist..."
+  rm -rf "$TARGET/dist"
+
+  echo "➡️ Copying new dist..."
+  cp -R ./dist "$TARGET/"
+
+  cd "$TARGET" || return
+
+  echo "➡️ Git add, commit, push..."
+  git add .
+  git commit -m "Update dist"
+  git push
+
+  echo "✅ Deploy complete"
+}
