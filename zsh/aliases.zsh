@@ -11,7 +11,7 @@ alias ghd='function _gh_deploy() { current_branch=$(git rev-parse --abbrev-ref H
 alias ghdt='function _gh_deploy_test() { current_branch=$(git rev-parse --abbrev-ref HEAD); gh workflow run deploy.yml --ref "$current_branch" -f environment=testing; }; _gh_deploy_test'
 alias ghpr="gh pr create -t '$(git rev-parse --abbrev-ref HEAD)'"
 alias gpdf='_gpdf'
-alias load-company-dump='function _load_company_dump() { day_string=$(date +%Y-%m-%d); dump_name="dump_company_$1_$day_string.sql"; echo "Loading dump $dump_name"; gh workflow run transfer-company-dump.yml --ref main -f environment=development-d02 -f company_id=$1; php artisan clockin:load-database-dump-from-s3 clockin-development-transfer $dump_name; }; _load_company_dump'
+alias load-company-dump='function _load_company_dump() { day_string=$(date +%Y-%m-%d); dump_name="dump_company_$1_$day_string.sql"; echo "Loading dump $dump_name"; gh workflow run transfer-company-dump.yml --ref main -f environment=development-d03 -f company_id=$1; php artisan clockin:load-database-dump-from-s3 clockin-development-transfer $dump_name; }; _load_company_dump'
 alias mfs='php artisan migrate:fresh --seed'
 alias mm="git fetch origin && git merge origin/main"
 alias pest='./vendor/bin/pest'
