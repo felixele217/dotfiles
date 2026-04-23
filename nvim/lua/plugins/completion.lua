@@ -1,6 +1,13 @@
 return {
   'saghen/blink.cmp',
   dependencies = {
+    {
+      'zbirenbaum/copilot.lua',
+      opts = {
+        suggestion = { enabled = false },
+        panel = { enabled = false },
+      },
+    },
     'giuxtaposition/blink-cmp-copilot',
     'rafamadriz/friendly-snippets',
   },

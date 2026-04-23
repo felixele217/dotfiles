@@ -11,20 +11,22 @@ alias ghd='function _gh_deploy() { current_branch=$(git rev-parse --abbrev-ref H
 alias ghdt='function _gh_deploy_test() { current_branch=$(git rev-parse --abbrev-ref HEAD); gh workflow run deploy.yml --ref "$current_branch" -f environment=testing; }; _gh_deploy_test'
 alias ghpr="gh pr create -t '$(git rev-parse --abbrev-ref HEAD)'"
 alias gpdf='_gpdf'
-alias load-company-dump='function load-company-dump(){
+
+load-company-dump() {
     export AWS_PROFILE=development-poweruser
     export AWS_ACCESS_KEY_ID=
     export AWS_SECRET_ACCESS_KEY=
 
     day_string=$(date +%Y-%m-%d)
-    dump_name="dump_company_$1_$day_string.sql"
+    dump_name="dump_company_${1}_$day_string.sql"
     echo "Loading dump $dump_name"
-    if [ -n "$2" ]
-    then
-        gh workflow run transfer-company-dump.yml --ref main -f environment=development-d03 -f company_id=$1
+    if [ -n "$2" ]; then
+        gh workflow run transfer-company-dump.yml --ref main -f environment=development-d03 -f company_id="$1"
     fi
-    php artisan clockin:load-database-dump-from-s3 clockin-development-transfer $dump_name
-}'
+    php artisan clockin:load-database-dump-from-s3 clockin-development-transfer "$dump_name"
+}
+alias load-company-dump='load-company-dump'
+
 alias mfs='php artisan migrate:fresh --seed'
 alias mm="git fetch origin && git merge origin/main"
 alias pest='./vendor/bin/pest'
@@ -37,4 +39,3 @@ alias redis-testing="ssh -L 127.0.0.1:6379:master.valkey-rep-group-1.oxpzpo.euc1
 alias routes='php artisan routes:list'
 alias sl="stripe listen --forward-to https://office.clockin.test/stripe/webhook"
 alias startgotenberg='docker run -it --add-host=office.clockin.test:host-gateway --rm -p 3000:3000 gotenberg/gotenberg:8.22.0 /bin/bash -c "gotenberg --chromium-ignore-certificate-errors"'
-alias vim='nvim'

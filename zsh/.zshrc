@@ -15,11 +15,13 @@ source $ZSH/oh-my-zsh.sh
 export PATH=/opt/homebrew/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin
 
 export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 
 # add tmuxifier to path
 export PATH="$HOME/.tmuxifier/bin:$PATH"
-export EDITOR=nvim
+export EDITOR=vim
 # eval "$(tmuxifier init -)"
+eval "$(fnm env --use-on-cd --shell zsh)"
 
 # Herd injected PHP binary.
 # export PATH="/Users/felix/Library/Application Support/Herd/bin/":$PATH
@@ -90,3 +92,11 @@ deploydist() {
 
   echo "✅ Deploy complete"
 }
+
+fpath+=~/.zfunc; autoload -Uz compinit; compinit
+
+zstyle ':completion:*' menu select
+
+
+# Herd injected PHP 8.5 configuration.
+export HERD_PHP_85_INI_SCAN_DIR="/Users/felix/Library/Application Support/Herd/config/php/85/"
