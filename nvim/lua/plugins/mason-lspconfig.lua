@@ -1,7 +1,7 @@
 return {
     'mason-org/mason-lspconfig.nvim',
     opts = {
-        ensure_installed = { 'lua_ls', 'intelephense', 'vue_ls' },
+        ensure_installed = { 'lua_ls', 'intelephense', 'vue_ls', 'vtsls' },
     },
     dependencies = {
         { 'mason-org/mason.nvim', opts = {} },

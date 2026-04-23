@@ -17,6 +17,11 @@ export PATH=/opt/homebrew/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 
+# Ghostty app bundle fallback (when binary is not in /opt/homebrew/bin)
+if [[ -x "/Applications/Ghostty.app/Contents/MacOS/ghostty" ]]; then
+  export PATH="/Applications/Ghostty.app/Contents/MacOS:$PATH"
+fi
+
 # add tmuxifier to path
 export PATH="$HOME/.tmuxifier/bin:$PATH"
 export EDITOR=vim

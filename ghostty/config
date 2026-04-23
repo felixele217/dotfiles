@@ -1,0 +1,10 @@
+font-family = "JetBrainsMono Nerd Font"
+font-family-bold = "JetBrainsMono Nerd Font"
+font-family-italic = "JetBrainsMono Nerd Font"
+font-family-bold-italic = "JetBrainsMono Nerd Font"
+
+window-save-state = always
+font-size = 16
+background = #1f1928
+adjust-cell-height = 16
+window-padding-x = 8

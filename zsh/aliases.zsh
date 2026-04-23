@@ -5,6 +5,9 @@ alias deploypages='npm run deploy-pages'
 alias dev='npm run dev'
 alias duskdriver='sudo ./vendor/laravel/dusk/bin/chromedriver-mac-arm --port=9515'
 alias duskserve='php artisan serve --env=testing --port 8008'
+
+# Open Neovim in a padding-free Ghostty window (Ghostty padding is window-global)
+alias nv='open -na Ghostty.app --args --window-padding-x=0 -e nvim'
 alias dusktest='php artisan dusk --env=testing'
 alias gc='function _gc() { message=${1:-"wip"}; git add . && git commit -m "$message" && git push; }; _gc'
 alias ghd='function _gh_deploy() { current_branch=$(git rev-parse --abbrev-ref HEAD); gh workflow run deploy.yml --ref "$current_branch" -f environment=development-"$1"; }; _gh_deploy'

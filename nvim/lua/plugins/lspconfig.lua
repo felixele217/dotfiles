@@ -6,32 +6,28 @@ return {
       'mason-org/mason-lspconfig.nvim',
     },
     config = function()
-      vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
-        border = 'rounded',
-        max_width = 100,
-        max_height = 30,
-      })
-
-      vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-        border = 'rounded',
-      })
-
-      vim.api.nvim_set_hl(0, 'NormalFloat', { bg = '#1b1d2b' })
-      vim.api.nvim_set_hl(0, 'FloatBorder', { fg = '#7dcfff', bg = '#1b1d2b' })
-      vim.api.nvim_set_hl(0, 'FloatTitle', { fg = '#7dcfff', bold = true, bg = '#1b1d2b' })
-
       vim.api.nvim_create_autocmd('LspAttach', {
         group = vim.api.nvim_create_augroup('user-lsp-attach', { clear = true }),
         callback = function(event)
-          local map = function(keys, func, desc)
-            vim.keymap.set('n', keys, func, { buffer = event.buf, silent = true, desc = desc })
+          local function has_method(method)
+            return #vim.lsp.get_clients({ bufnr = event.buf, method = method }) > 0
           end
 
-          map('K', vim.lsp.buf.hover, 'LSP hover')
-          map('gd', vim.lsp.buf.definition, 'LSP go to definition')
-          map('gD', vim.lsp.buf.declaration, 'LSP go to declaration')
-          map('gi', vim.lsp.buf.implementation, 'LSP go to implementation')
-          map('gt', vim.lsp.buf.type_definition, 'LSP go to type definition')
+          local map = function(keys, method, func, desc)
+            vim.keymap.set('n', keys, function()
+              if not has_method(method) then
+                vim.notify('No LSP client for ' .. method .. ' in this buffer', vim.log.levels.WARN)
+                return
+              end
+              func()
+            end, { buffer = event.buf, silent = true, desc = desc })
+          end
+
+          map('K', 'textDocument/hover', vim.lsp.buf.hover, 'LSP hover')
+          map('gd', 'textDocument/definition', vim.lsp.buf.definition, 'LSP go to definition')
+          map('gD', 'textDocument/declaration', vim.lsp.buf.declaration, 'LSP go to declaration')
+          map('gi', 'textDocument/implementation', vim.lsp.buf.implementation, 'LSP go to implementation')
+          map('gt', 'textDocument/typeDefinition', vim.lsp.buf.type_definition, 'LSP go to type definition')
         end,
       })
 
@@ -40,6 +36,8 @@ return {
       if ok_blink and blink.get_lsp_capabilities then
         capabilities = blink.get_lsp_capabilities(capabilities)
       end
+
+      local lspconfig = require('lspconfig')
 
       local servers = {
         lua_ls = {
@@ -67,18 +65,30 @@ return {
             },
           },
         },
-        vue_ls = {},
+        vtsls = {},
+        vue = {},
       }
 
-      require('mason-lspconfig').setup {
-        handlers = {
-          function(server_name)
-            local server = servers[server_name] or {}
-            server.capabilities = capabilities
-            require('lspconfig')[server_name].setup(server)
-          end,
-        },
-      }
+      require('mason-lspconfig').setup {}
+
+      for server_name, server in pairs(servers) do
+        if server_name ~= 'vue' then
+          server.capabilities = capabilities
+          lspconfig[server_name].setup(server)
+        end
+      end
+
+      local vue_opts = vim.deepcopy(servers.vue)
+      vue_opts.capabilities = capabilities
+
+      -- `volar` and `vue_ls` naming differs across lspconfig versions.
+      if not pcall(function()
+        lspconfig.volar.setup(vue_opts)
+      end) then
+        pcall(function()
+          lspconfig.vue_ls.setup(vue_opts)
+        end)
+      end
     end,
   },
 }
