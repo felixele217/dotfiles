@@ -63,5 +63,8 @@ vim.opt.scrolloff = 10
 -- block cursor always
 -- vim.opt.guicursor = 'n-v-c-i:block'
 
+-- Add 4px spacing between rendered lines (GUI clients)
+vim.opt.linespace = 4
+
 -- Ignore swapfile
 vim.opt.swapfile = false

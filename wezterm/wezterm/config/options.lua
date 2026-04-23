@@ -44,7 +44,8 @@ options.setup = function(config, wezterm)
   })
 
   config.font_size = 16
-  config.line_height = 1.3
+  config.font = wezterm.font('JetBrainsMono Nerd Font')
+  config.line_height = 1.55
   -- config.cell_width = 0.93 -- letter spacing
 
   config.use_fancy_tab_bar = false
