@@ -34,6 +34,10 @@ eval "$(fnm env --use-on-cd --shell zsh)"
 # Herd injected PHP 8.2 configuration.
 # export HERD_PHP_82_INI_SCAN_DIR="/Users/felix/Library/Application Support/Herd/config/php/82/"
 
+# VS Code CLI in PATH (für 'code .')
+export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+
+
 # Herd injected PHP binary.
 export PATH="/Users/felix/Library/Application Support/Herd/bin/":$PATH
 

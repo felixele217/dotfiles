@@ -35,6 +35,8 @@ alias mm="git fetch origin && git merge origin/main"
 alias pest='./vendor/bin/pest'
 alias phpcs='./vendor/bin/php-cs-fixer fix --config=.php-cs-fixer.dist.php -v'
 alias phpstan="./vendor/bin/phpstan analyse"
+alias pn="pnpm"
+alias pnci="pnpm install --frozen-lockfile"
 alias ptest='php artisan test --parallel'
 alias pu='./vendor/bin/phpunit'
 alias redis-production="ssh -L 127.0.0.1:6379:master.valkey-rep-group-1.tgbxwd.euc1.cache.amazonaws.com:6379 aws-production"
