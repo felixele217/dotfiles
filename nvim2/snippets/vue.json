@@ -23,10 +23,28 @@
   },
   "i18n phrases": {
     "prefix": "ph",
-    "body": ["\\$t('phrases.${1:phrase}')"]
+    "body": [
+      "\\$t('phrases.${1:phrase}')"
+    ]
   },
   "i18n words": {
     "prefix": "wo",
-    "body": ["\\$t('words.${1:word}')"]
+    "body": [
+      "\\$t('words.${1:word}')"
+    ]
+  },
+  "dialog": {
+    "prefix": "dia",
+    "body": [
+      "const dialog = ref<InstanceType<typeof Dialog> | null>()"
+    ]
+  },
+  "emit": {
+    "prefix": "em",
+    "body": [
+      "const emit = defineEmits<{",
+      "(e: 'gc'): void",
+      "}>()"
+    ]
   }
 }
