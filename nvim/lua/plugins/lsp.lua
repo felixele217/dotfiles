@@ -13,16 +13,19 @@ return {
   {
     "neovim/nvim-lspconfig",
     opts = {
-      -- gd -> definition, gr -> references for every LSP. These are the LazyVim
-      -- defaults in this version, but some versions / picker extras remap gr, so we
-      -- pin them explicitly to keep the PHP nav muscle-memory stable across upgrades.
+      -- LSP nav keymaps (gd/gr/gI/K/...) are owned by LazyVim's global list and the
+      -- snacks-picker extra (gd -> Snacks.picker.lsp_definitions, gr -> lsp_references).
+      -- We deliberately do NOT override them here: this LazyVim version *extends*
+      -- `servers["*"].keys` onto that global list (opts_extend = "servers.*.keys") and
+      -- applies it last, so a manual `{ "gd", vim.lsp.buf.definition }` / `{ "gr",
+      -- vim.lsp.buf.references }` actually WINS over the picker and reverts PHP nav to
+      -- the raw quickfix-dumping handlers — which is exactly what reads as "gr does
+      -- nothing". Leaving these unset keeps PHP on the same idiomatic picker nav as
+      -- every other language; gd/gr/K then resolve into both project classes and
+      -- vendor/ once intelephense has indexed a workspace root (composer.json or .git,
+      -- always present in a Laravel project — run `composer install` so vendor/ is
+      -- populated and jumpable).
       servers = {
-        ["*"] = {
-          keys = {
-            { "gd", vim.lsp.buf.definition, desc = "Goto Definition", has = "definition" },
-            { "gr", vim.lsp.buf.references, desc = "References", nowait = true },
-          },
-        },
         phpactor = { enabled = false },
         intelephense = {
           settings = {

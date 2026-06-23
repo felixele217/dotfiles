@@ -192,8 +192,12 @@ bindings work in any file with an active LSP:
   phpactor is excellent for heavy refactoring but needs more configuration to
   match day-to-day ergonomics. It's installed automatically via Mason. (If you
   ever prefer phpactor, flip the choice in `nvim/lua/plugins/lsp.lua`.)
-  - **Navigation:** `gd` → definition, `gr` → references (pinned explicitly in
-    `lsp.lua` so they survive LazyVim upgrades that remap `gr`).
+  - **Navigation:** `gd` → definition, `gr` → references, `K` → hover docs — the
+    standard LazyVim/snacks-picker LSP keymaps (we don't override them in `lsp.lua`;
+    overriding `gd`/`gr` back to the raw handlers is what previously broke them).
+    They jump into project classes *and* `vendor/` once intelephense has indexed the
+    workspace — so the project needs a `composer.json` (or `.git`) root and a
+    populated `vendor/` (`composer install`) for vendor definitions to resolve.
   - **Diagnostics posture (no docblock nagging).** The team doesn't enforce
     phpdoc — formatting is php-cs-fixer and types come from IDE Helper files, not
     docblocks. The `lang.php` extra turns on **phpcs** via nvim-lint, whose
