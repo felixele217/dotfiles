@@ -192,6 +192,26 @@ bindings work in any file with an active LSP:
   phpactor is excellent for heavy refactoring but needs more configuration to
   match day-to-day ergonomics. It's installed automatically via Mason. (If you
   ever prefer phpactor, flip the choice in `nvim/lua/plugins/lsp.lua`.)
+  - **Navigation:** `gd` → definition, `gr` → references (pinned explicitly in
+    `lsp.lua` so they survive LazyVim upgrades that remap `gr`).
+  - **Diagnostics posture (no docblock nagging).** The team doesn't enforce
+    phpdoc — formatting is php-cs-fixer and types come from IDE Helper files, not
+    docblocks. The `lang.php` extra turns on **phpcs** via nvim-lint, whose
+    default standard spams `Missing doc comment for function ...`; that linter is
+    disabled for PHP. Intelephense stays the diagnostics source and keeps the
+    *actionable* errors on — undefined methods/types, type errors, argument
+    counts — while the noisy `unusedSymbols` signal is off.
+  - **Formatting → php-cs-fixer.** `<leader>cf` and format-on-save run
+    php-cs-fixer for PHP buffers (via conform.nvim). It prefers a project-local
+    `vendor/bin/php-cs-fixer` and runs at the `composer.json` root, so a project
+    `.php-cs-fixer.php` / `.php-cs-fixer.dist.php` is picked up automatically.
+    Installed via Mason (package `php-cs-fixer`).
+  - **Laravel IDE Helper.** Intelephense indexes `_ide_helper.php`,
+    `_ide_helper_models.php`, and `.phpstorm.meta.php` so model/facade completion
+    works. The file-size cap is raised to 5 MB (`intelephense.files.maxSize`) so
+    a large `_ide_helper_models.php` isn't silently skipped, and the helper files
+    are not in the exclude list. Regenerate them with
+    `php artisan ide-helper:generate` / `ide-helper:models`.
 - **Vue → vue_ls (Volar) + vtsls.** Vue's language server needs a companion
   TypeScript server with the `@vue/typescript-plugin` so that `.vue` files and
   the surrounding TS/JS understand each other. This is handled by LazyVim's

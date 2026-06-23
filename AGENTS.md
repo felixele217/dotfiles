@@ -16,6 +16,16 @@ This file is the project's committed home for project-intrinsic agent knowledge:
 - PHP LSP is **intelephense** (chosen over phpactor); Vue uses `vue_ls`/Volar + vtsls via the `lang.vue` + `lang.typescript` extras. Extras are imported in `lua/config/lazy.lua` and tracked in `lazyvim.json`.
 - `lazy-lock.json` is gitignored. Running a headless bootstrap with the real config symlinked writes `lazy-lock.json` into `nvim/` — harmless but stray; remove it.
 - Syntax-check lua without plugins: `nvim --headless -u NONE -c "lua loadfile('<file>')" -c qa`.
+- Full plugin-load check without touching the live config: copy `nvim/` into a throwaway `XDG_CONFIG_HOME` (and reuse `~/.local/share/nvim` as `XDG_DATA_HOME`), then `nvim --headless "+Lazy! load all" +qa`. Inspect merged plugin opts with `require("lazy.core.plugin").values(plug, "opts", false)`.
+- lazy.nvim opts merge (`lazy/core/util.lua` `merge`): a **non-empty list replaces**, an empty table `{}` also replaces. So to clear an extra's list value (e.g. disable a linter the `lang.php` extra added) set it to `{}` in a later spec — `linters_by_ft.php = {}` wins over the extra's `{ "phpcs" }`.
+
+## PHP / Laravel workflow (intelephense + php-cs-fixer)
+All PHP tuning lives in `nvim/lua/plugins/lsp.lua` (overrides on top of the `lang.php` extra).
+- **Keymaps:** `gd`→definition, `gr`→references are pinned via `servers["*"].keys` so a LazyVim upgrade that remaps `gr` (some picker extras do) can't silently change them. Current LazyVim already defaults to these.
+- **Docblock noise is phpcs, NOT intelephense.** The "Missing doc comment for function …" message is the phpcs `Squiz.Commenting.FunctionComment.Missing` sniff; intelephense's binary contains no such message. The `lang.php` extra enables phpcs via **nvim-lint** (`linters_by_ft.php = { "phpcs" }`). We disable it (`php = {}`) because the team standard is php-cs-fixer + IDE Helper, not enforced docblocks. Intelephense remains the diagnostics source with actionable errors on (undefined symbols/methods/types, type errors, argument count) and `unusedSymbols` off.
+- **Formatting is php-cs-fixer** via conform.nvim (`formatters_by_ft.php = { "php_cs_fixer" }`, already set by the extra; we re-declare for clarity). conform's `php_cs_fixer` formatter prefers `vendor/bin/php-cs-fixer` and runs at the `composer.json` root, so a project `.php-cs-fixer.php`/`.dist.php` is auto-respected. Mason package name: `php-cs-fixer`.
+- **Laravel IDE Helper:** `intelephense.files.maxSize` is raised to 5 MB so a large `_ide_helper_models.php` isn't skipped (default ~1 MB), and the helper files (`_ide_helper.php`, `_ide_helper_models.php`, `.phpstorm.meta.php`) are not excluded — keeps model/facade completion working.
+- **Mason org rename:** the plugin is `mason-org/mason.nvim`; the old `williamboman/mason.nvim` name causes a startup error.
 
 ## tmux
 - Prefix is `C-Space`. Model: **sessions act as tabs** — `prefix C-c` new session, `prefix s` picker, `prefix H`/`L` cycle, `prefix Space` last. Splits: `prefix |` (vertical), `prefix -` (horizontal).
