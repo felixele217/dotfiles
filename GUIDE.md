@@ -169,6 +169,13 @@ essentials are below.
 These use LazyVim's default fuzzy picker. Type to filter; `Enter` opens;
 `Ctrl-j`/`Ctrl-k` move; `Esc` closes.
 
+**Hidden & ignored files.** The file finder includes hidden dot-dirs
+(`.claude`, `.github`, …) so dotfiles are searchable; it still respects
+`.gitignore`, so `node_modules/`/`vendor/` stay out. Live grep goes further and
+also searches **gitignored** files (so generated/local files are greppable),
+excluding only the bulky `node_modules/`/`vendor/` dirs. `.git/` internals are
+never shown in either.
+
 ### File explorer — oil.nvim
 
 This setup replaces the tree-style explorer with **oil.nvim**: you edit your
