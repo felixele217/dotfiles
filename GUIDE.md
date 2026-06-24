@@ -92,13 +92,33 @@ Two ways, both work:
 | Toggle the status bar | `prefix _` |
 | Mouse support | on (click panes, drag borders, scroll) |
 
+### The status line
+
+The status line lives at the **top** of the screen and is **transparent** — its
+background is `default`, so ghostty's terminal background (and any window
+transparency) shows straight through. Only the segment "pills" carry colour,
+all drawn from the **rose-pine** palette so tmux, ghostty, and Neovim match.
+
+- **Left — windows as tabs.** Each window is a tab. The active window is a
+  rounded **gold pill** (`#I: #F #W` → index, flags, name) with dark text;
+  inactive windows are dim and plain. A 󰊓 marks a zoomed pane.
+- **Right — clock + session.** A subtle `YYYY-MM-DD HH:MM` clock, a 󰌌 that
+  lights up (love/pink) while the **prefix** is held, then the current
+  **session name** in its own rounded **iris pill**.
+
+It's hand-rolled directly in `tmux/.tmux.conf` (no status-line plugin), so the
+colours and layout are fully under the repo's control. `prefix _` still toggles
+the whole bar off/on.
+
 ### Plugins (managed by tpm)
 
 - `tpm` — the plugin manager. Install plugins with `prefix I`, update with `prefix U`.
 - `tmux-resurrect` + `tmux-continuum` — auto-save and auto-restore sessions
   (including pane contents) across reboots.
 - `vim-tmux-navigator` — the `Ctrl-h/j/k/l` seamless nav above.
-- `minimal-tmux-status` — the lean status line.
+
+The status line is **hand-rolled** in `tmux/.tmux.conf` (see above), not a
+plugin.
 
 > First-time setup: press `prefix I` (capital I) once to fetch the plugins.
 

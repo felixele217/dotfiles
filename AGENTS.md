@@ -36,6 +36,8 @@ All PHP tuning lives in `nvim/lua/plugins/lsp.lua` (overrides on top of the `lan
 - Prefix is `C-Space`. Model: **sessions act as tabs** — `prefix C-c` new session, `prefix s` picker, `prefix H`/`L` cycle, `prefix Space` last. Splits: `prefix |` (vertical), `prefix -` (horizontal).
 - `detach-on-destroy off` is intentional (closing a session hops to another, not detach).
 - Validate config parse: `tmux -L <sock> -f tmux/.tmux.conf new-session -d` then `kill-server`.
+- **Status line is hand-rolled** in `tmux/.tmux.conf` (no status-line plugin — `minimal-tmux-status` was dropped). Design: `status-position top`, transparent bar (`status-style bg=default` inherits ghostty's bg/transparency), rose-pine palette. Active window = gold (#f6c177) rounded pill (E0B6/E0B4 caps) w/ base (#191724) text; inactive = muted plain; session = iris (#c4a7e7) pill on the right after a subtle clock + prefix indicator. To restyle, edit `window-status-current-format`/`window-status-format`/`status-right` directly.
+- **Verification gotcha:** tpm's `run '~/.tmux/plugins/tpm/tpm'` reads `~/.tmux.conf` (the live symlink), NOT the `-f` file you pass. So a `tmux -L test -f tmux/.tmux.conf` check loads whatever plugins the *installed* `~/.tmux.conf` declares and they override your hand-rolled options. To verify status-line options cleanly from a worktree, strip the tpm `run` line first: `grep -v "tpm/tpm'" tmux/.tmux.conf > /tmp/t.conf` then `tmux -L test -f /tmp/t.conf new-session -d` and `show-options -g`. In production `install` symlinks this file to `~/.tmux.conf`, so tpm sees the right declarations.
 
 ## ghostty
 - Theme is the built-in **`Rose Pine`** (note the exact name: capitalized, with a space — `theme = rose-pine` does NOT resolve).
