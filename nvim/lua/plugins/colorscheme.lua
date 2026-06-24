@@ -8,8 +8,8 @@ return {
       variant = "main", -- main | moon | dawn
       dark_variant = "main",
       styles = {
-        italic = true,
-        transparency = false,
+        italic = false,
+        transparency = true,
       },
     },
   },

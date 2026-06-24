@@ -5,6 +5,9 @@ font-family-bold-italic = "JetBrainsMono Nerd Font"
 
 theme = Rose Pine
 
+background-opacity = 0.9
+background-blur = true
+
 window-save-state = always
 font-size = 16
 adjust-cell-height = 16
