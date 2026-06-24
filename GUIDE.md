@@ -190,14 +190,27 @@ bindings work in any file with an active LSP:
   gives stronger out-of-the-box completion, signature help, and cross-file type
   inference for typical framework/Laravel code with essentially zero tuning.
   phpactor is excellent for heavy refactoring but needs more configuration to
-  match day-to-day ergonomics. It's installed automatically via Mason. (If you
-  ever prefer phpactor, flip the choice in `nvim/lua/plugins/lsp.lua`.)
+  match day-to-day ergonomics. It's installed automatically via Mason.
+  - **How the server is selected.** The active PHP server is chosen by
+    `vim.g.lazyvim_php_lsp = "intelephense"` in `nvim/lua/config/options.lua`. The
+    `lang.php` extra defaults this to `"phpactor"`, so this line is what actually
+    enables intelephense (and disables phpactor). It must live in `options.lua`
+    because the extra reads the global at load time, before plugin specs build.
+    **This was the real bug behind earlier "gd/gr/K do nothing" reports:** the global
+    was unset *and* phpactor was disabled, so no PHP server attached at all — there
+    was simply nothing to answer hover/definition/references. To prefer phpactor
+    instead, change this one global.
   - **Navigation:** `gd` → definition, `gr` → references, `K` → hover docs — the
     standard LazyVim/snacks-picker LSP keymaps (we don't override them in `lsp.lua`;
-    overriding `gd`/`gr` back to the raw handlers is what previously broke them).
-    They jump into project classes *and* `vendor/` once intelephense has indexed the
-    workspace — so the project needs a `composer.json` (or `.git`) root and a
-    populated `vendor/` (`composer install`) for vendor definitions to resolve.
+    overriding `gd`/`gr` back to the raw handlers is a *separate* footgun that also
+    breaks them, so they stay unset). They jump into project classes *and* `vendor/`
+    once intelephense has indexed the workspace — so the project needs a
+    `composer.json` (or `.git`) root and a populated `vendor/` (`composer install`)
+    for vendor definitions to resolve.
+  - **Indexing caveat.** The first index of a large project + `vendor/` can take
+    ~60–90s; until it settles, hover/definition/references return empty. That is
+    indexing latency, not a misconfiguration. Intelephense caches the index under
+    `stdpath("data")`, so subsequent starts are near-instant.
   - **Diagnostics posture (no docblock nagging).** The team doesn't enforce
     phpdoc — formatting is php-cs-fixer and types come from IDE Helper files, not
     docblocks. The `lang.php` extra turns on **phpcs** via nvim-lint, whose
@@ -216,10 +229,31 @@ bindings work in any file with an active LSP:
     a large `_ide_helper_models.php` isn't silently skipped, and the helper files
     are not in the exclude list. Regenerate them with
     `php artisan ide-helper:generate` / `ide-helper:models`.
+  - **Laravel awareness → laravel_ls.** Alongside intelephense we run
+    [`laravel-ls`](https://github.com/laravel-ls/laravel-ls) (Mason package
+    `laravel-ls`, lspconfig server `laravel_ls`). It adds the Laravel
+    string-context intelephense can't see — `route()` names, `view()`/Blade,
+    `config()`/`env()` keys, translations, app bindings — with hover, go-to-def
+    and completion on those. lspconfig attaches it to `php` + `blade` filetypes
+    with an `artisan` root marker, so it only activates inside a real Laravel
+    project and stays quiet elsewhere; it does **not** displace intelephense (the
+    two cover different ground and run together). `.blade.php` files stay on the
+    default `php` filetype, so PHP highlighting still applies and laravel_ls still
+    covers them. It is pre-1.0 (alpha) — expect occasional rough edges.
 - **Vue → vue_ls (Volar) + vtsls.** Vue's language server needs a companion
   TypeScript server with the `@vue/typescript-plugin` so that `.vue` files and
   the surrounding TS/JS understand each other. This is handled by LazyVim's
   `lang.vue` + `lang.typescript` extras, imported in `nvim/lua/config/lazy.lua`.
+  - **Hover noise fix.** Vue buffers attach several clients (vue_ls, vtsls,
+    tailwindcss, eslint). noice (shipped on by LazyVim) replaces `K`'s hover with a
+    *per-client* handler, so every client with no result popped its own
+    `No information available` notify even while another showed the real hover
+    (it appeared "twice"). We disable noice's hover override
+    (`lsp.hover.enabled = false` in `nvim/lua/plugins/lsp.lua`) so `K` falls back to
+    core `vim.lsp.buf.hover`, which aggregates all clients and only reports
+    `No information available` when *every* client is empty. noice still styles the
+    hover markdown, and a genuine no-hover spot still reports once. This applies to
+    any multi-client buffer, not just Vue.
 
 ### Managing the setup
 
